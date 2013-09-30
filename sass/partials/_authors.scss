@@ -1,0 +1,80 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+/*51,102,255*/
+	body { background-color: rgb(0,0,0); color: rgb(255,255,255); }
+	
+	header [role="heading"],
+	header [role="navigation"],
+	header [role="marquee"],
+	footer [role="contentinfo"],	
+	main { margin: 0 auto; padding: 10px; border-bottom: 1px solid rgb(255,255,255); }
+	
+	nav a { margin: 0; padding: 0; }
+	[role="navigation"] a { width: 25%; }
+	[role="listbox"] a,
+	[role="menuitem"] a { display: inline-block; margin: 0 10px;  }
+	[role="listbox"] a:hover,
+	[role="menuitem"] a:hover { text-decoration: none; }
+	
+	time { font-size: 1.0em; font-style:oblique; }
+	
+	figure {
+		position: relative;
+		margin: 0; padding: 0;
+		overflow: hidden;	
+	}
+	
+	figure figcaption { 
+		position: absolute; left: 0;
+		margin: 0; padding: 0;
+		display: block; 
+	}
+	
+	[role="marquee"] figure figcaption {
+		bottom: 0;		
+	}
+	
+	[role="alert"] aside figure {
+		width:300px; 
+		height: 200px; 
+		border: 1px solid rgb(255,255,255);
+	}
+	
+	[role="alert"] aside figure figcaption { 
+		top: 0; 
+		width: 100px; 
+		line-height: 30px; 
+		text-align: center; 
+		border-bottom: 1px solid rgb(255,255,255); 
+		text-transform:capitalize;
+		z-index: 1;
+	}
+	[role="alert"] aside figure figcaption p { 
+		position: relative; top:0;left:-1px;
+		margin: 0; 
+		text-align: center; 
+		line-height: 30px;
+		text-transform:capitalize;
+		z-index: 2;
+		border-left: 1px solid rgb(255,255,255); 
+	}
+	[role="alert"] aside figure figcaption:after {
+		position: absolute;
+		top: 0;
+		right: -15px;
+		display: block;
+		content:" ";
+		width: 130px;
+		height: 30px;
+		transform:skewX(135deg);
+		-ms-transform:skewX(135deg);
+		-webkit-transform:skewX(135deg);
+		border-right: 1px solid rgb(255,255,255);
+		background: rgba(0,0,0,0.7);
+		z-index: 1;	
+	}
+
+
+
+
