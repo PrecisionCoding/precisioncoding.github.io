@@ -10,10 +10,14 @@
 	footer [role="contentinfo"],	
 	main { margin: 0 auto; padding: 10px; border-bottom: 1px solid rgb(255,255,255); }
 	
-	nav a { margin: 0; padding: 0; }
+	nav a, [role="listbox"] { margin: 0 auto; padding: 0; }
+	
 	[role="navigation"] a { width: 25%; }
+	
+	[role="listbox"] li { width: auto; display: inline; }
+	
 	[role="listbox"] a,
-	[role="menuitem"] a { display: inline-block; margin: 0 10px;  }
+	[role="menuitem"] a { display: inline-block; margin: 0 10px; }
 	[role="listbox"] a:hover,
 	[role="menuitem"] a:hover { text-decoration: none; }
 	
@@ -71,7 +75,7 @@
 		-ms-transform:skewX(135deg);
 		-webkit-transform:skewX(135deg);
 		border-right: 1px solid rgb(255,255,255);
-		background: rgba(0,0,0,0.7);
+		background: $blackalpha7;
 		z-index: 1;	
 	}
 
