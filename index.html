@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -17,28 +17,32 @@
 
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
-    <body>
+    <body style="width: 320px;">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-
+	<aside role="toolbar">
+		<nav role="menubar">
+			<ol role="menu" class="clearfix">
+				<li role="menuitem"><a href="#" title="Subscribe"><i class="icon-rss icon-large"></i></a></li>
+				<li role="menuitem"><a href="#" title="Register"><i class="icon-edit icon-large"></i></a></li>
+				<li role="menuitem"><a href="#" title="Login"><i class="icon-signin icon-large"></i></a></li>
+				<li role="menuitem"><a id="followers" title="Currently hiding offline from the twits; Visit Twitter to follow as well if you like!" class="tipped" href="http://twitter.com/precisioncoding"><i class="icon-twitter-sign icon-large"></i></a></li>
+				<li role="menuitem"><a id="facebooked" title="Like us on Facebook, the social place" class="tipped" href="https://www.facebook.com/pages/Random-Precision-Ltd/186625484704038"><i class="icon-facebook-sign icon-large"></i></a></li>
+				<li role="menuitem"><a id="linked" title="Visit on LinkedIn - The Professional Network, let's link up!" class="tipped" href="http://uk.linkedin.com/in/randomprecisionltd"><i class="icon-linkedin-sign icon-large"></i></a></li>
+				<li role="menuitem"><a id="googleplus" title="Check us out on Google+" class="tipped" rel="publisher" href="https://plus.google.com/117061364311134950845"><i class="icon-google-plus-sign icon-large"></i></a></li>
+			</ol>
+		</nav>
+		<div role="search">
+			<form method="post">
+				<input type="search" placeholder="Search anything &#8230;" />
+			</form>
+		</div>
+	</aside>
 	<header role="banner">
 		<section role="heading">
 			<h1>Random Precision</h1>
-			<aside role="toolbar">
-				<nav role="menubar">
-					<ol role="menu" class="clearfix">
-						<li role="menuitem"><a href="#" title="Subscribe"><i class="icon-rss"></i></a></li>
-						<li role="menuitem"><a href="#" title="Register"><i class="icon-edit"></i></a></li>
-						<li role="menuitem"><a href="#" title="Login"><i class="icon-signin"></i></a></li>
-					</ol>
-				</nav>
-				<div role="search">
-					<form method="post">
-						<input type="search" placeholder="Search anything &#8230;" />
-					</form>
-				</div>
-			</aside>
+
 		</section>
 		<nav>
 			<ul role="navigation" class="clearfix">

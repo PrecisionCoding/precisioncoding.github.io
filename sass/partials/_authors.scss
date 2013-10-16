@@ -4,6 +4,8 @@
 /*51,102,255*/
 	body { background-color: rgb(0,0,0); color: rgb(255,255,255); }
 	
+	[role="toolbar"] { text-align: center; }
+	
 	header [role="heading"],
 	header [role="navigation"],
 	header [role="marquee"],
@@ -15,6 +17,9 @@
 	[role="navigation"] a { width: 25%; }
 	
 	[role="listbox"] li { width: auto; display: inline; }
+	
+	[role="navigation"],
+	[role="menubar"] ol { margin-left: 10px; }
 	
 	[role="listbox"] a,
 	[role="menuitem"] a { display: inline-block; margin: 0 10px; }
