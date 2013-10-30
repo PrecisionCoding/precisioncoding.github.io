@@ -1,11 +1,48 @@
+function cssLoaded(href) {
+    var cssFound = false;
+
+    if (document.styleSheets != null) {
+        for (var i = 0; i < document.styleSheets.length; i++) {
+            var sheet = document.styleSheets[i];
+            
+            if (sheet['href'].indexOf(href) >= 0 ){
+                var rules = sheet.cssRules || sheet.rules;
+                if (rules != null && rules.length > 0) {
+                    cssFound = true;
+                } else {
+                    return;
+                }
+            }
+        };
+    }
+
+
+    return cssFound;
+}
+
+if (!cssLoaded('//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css')) {
+    local_bootstrap = document.createElement('link');
+    local_bootstrap.setAttribute("rel", "stylesheet");
+    local_bootstrap.setAttribute("href", "/css/helpers/font-awesome/4.0.1/css/font-awesome.min.css");
+    document.getElementsByTagName("head")[0].appendChild(local_bootstrap);
+}
+
+(function ($) {
+    var windowWidth = $(window).width();
+    var mediabreaks = [320, 480, 568, 768, 960, 1174];
+
+    //for (var m = 0; m < mediabreaks.length; m++) {
+    //    if (windowWidth >= mediabreaks[m]) {
+    var sliderWidth = $('[role="slider"] figure').width();
+    $('.slider-nav').width(((windowWidth - 4) - sliderWidth) / 2 );
+    //    }
+    //}
 	
-(function($) {
 	var iPhone5Width = 320;
 	var iPhone5Height = 568;
-	
-	var isMobile = $(window).width() <= iPhone5Height;
-	var isIphone5Portrait = $(window).width() == iPhone5Width;
-	var isIphone5Landscape = $(window).width() == iPhone5Height;
+	var isMobile = windowWidth <= iPhone5Height;
+	var isIphone5Portrait = windowWidth == iPhone5Width;
+	var isIphone5Landscape = windowWidth == iPhone5Height;
 	
 	var locale = window.location.host.split('.')[0];
 

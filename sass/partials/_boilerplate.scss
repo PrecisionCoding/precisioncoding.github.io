@@ -1,6 +1,9 @@
 /* ==========================================================================
    HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
    ========================================================================== */
+* { 
+	@include vendor-prefix(box-sizing, border-box);
+ } 
 
 html,
 button,
@@ -17,12 +20,12 @@ body {
 
 ::-moz-selection {
     background: #b3d4fc;
-    text-shadow: none;
+	@include vendor-prefix(text-shadow, none);
 }
 
 ::selection {
     background: #b3d4fc;
-    text-shadow: none;
+    @include vendor-prefix(text-shadow, none);
 }
 
 hr {

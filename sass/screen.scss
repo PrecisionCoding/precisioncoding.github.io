@@ -6,11 +6,38 @@
 /* ========================================================================== */
 //Colours:
 
-$blackalpha3: rgba(0,0,0,0.3);
-$blackalpha5: rgba(0,0,0,0.5);
-$blackalpha7: rgba(0,0,0,0.7);
+$black:			rgb(0,0,0);
+$blackalpha0:	rgba(0,0,0,0);
+$blackalpha3:	rgba(0,0,0,0.3);
+$blackalpha5:	rgba(0,0,0,0.5);
+$blackalpha7:	rgba(0,0,0,0.7);
+
+$white:			rgb(255,255,255);
+$whitealpha0:	rgba(255,255,255,0);
+$whitealpha3:	rgba(255,255,255,0.3);
+$whitealpha5:	rgba(255,255,255,0.5);
+$whitealpha7:	rgba(255,255,255,0.7);
+
+$blueprint:		rgb(59,89,152);
+
+//GRIDWORK
+$columns: 12; 
+$max-page-width: 1174; /* Even though we mean pixels, we leave out 'px' so that the mixing below can perform calculations on it. */ 
+$column-width: $max-page-width/$columns;
+$column-padding: 1rem;
+
+//media query breakpoints:
+$break-fast: 320px;
+$break-mornos: 480px;
+$break-lunch: 568px;
+$break-tea: 680px;
+$break-supper: 960px;
+$break-snack: 1174px;
 
 /*@import "compass/reset";*/
+@import "bourbon/bourbon";
+
+@import "partials/mixins";
 
 @import "partials/_boilerplate";
 @import "partials/_initializr";

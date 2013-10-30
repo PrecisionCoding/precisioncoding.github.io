@@ -1,89 +1,290 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+
+.unbulleted { margin: 0; padding: 0; }
+.unbulleted li { list-style-type: none; margin: auto 0; padding: 0; display: inline-block; }
+.unbulleted li a:hover { text-decoration: none; }
+
+a{
+	&:link, &:visited, &:hover, &:active { color: $white; text-decoration: none; }
+	&:hover, &:active { color: $white; text-decoration: underline; }
+}
+nav a {	margin: 0; padding: 0; }
+
 /*51,102,255*/
-	body { background-color: rgb(0,0,0); color: rgb(255,255,255); }
+body { 
+	@extend body;
+	background-color: $blueprint; 
+	color: $white; 
+}
+
+[role="banner"] { margin-bottom: 1.5rem;  }
+
+[role="toolbar"] { text-align: center; }
 	
-	[role="toolbar"] { text-align: center; }
-	
-	header [role="heading"],
-	header [role="navigation"],
-	header [role="marquee"],
-	footer [role="contentinfo"],	
-	main { margin: 0 auto; padding: 10px; border-bottom: 1px solid rgb(255,255,255); }
-	
-	nav a, [role="listbox"] { margin: 0 auto; padding: 0; }
-	
-	[role="navigation"] a { width: 25%; }
-	
-	[role="listbox"] li { width: auto; display: inline; }
-	
+	[role="heading"],
+	[role="marquee"] [role="columnheader"],
 	[role="navigation"],
-	[role="menubar"] ol { margin-left: 10px; }
-	
-	[role="listbox"] a,
-	[role="menuitem"] a { display: inline-block; margin: 0 10px; }
-	[role="listbox"] a:hover,
-	[role="menuitem"] a:hover { text-decoration: none; }
-	
-	time { font-size: 1.0em; font-style:oblique; }
-	
-	figure {
-		position: relative;
-		margin: 0; padding: 0;
-		overflow: hidden;	
+	main { 
+		@media screen and (min-width: $break-mornos){
+			width: 1172px;
+		}
+		margin: 0 auto; 
+		padding: 0.1% 10px; 
 	}
+	[role="heading"],
+	[role="navigation"] {
+		border: {
+			width: 0 1px 1px;
+			style: solid;
+			color: $white; 
+		}
+	}
+	main { margin: 1.5em auto; }
+
+[role="heading"] h1 { 
+	text-align: center; font-size:4.0em; line-height:1.0em; 
+	a {
+		b,
+		.flipped { 
+			color: $white; font-weight: 100; text-decoration: none; 
+			@include vendor-prefix(transition, all 300ms);
+			display: inline-block;
+		}
+		span { font-variant: small-caps; /*opacity: 0;*/ }
+		.flipped { 
+			margin-right: -8px;
+			display: inline-block; 
+			@include vendor-prefix(transform, scaleX(-1));
+			filter: FlipH;		/* IE 6/7/8 */
+			
+			b { opacity: 1; }
+			& + b { margin-left: -8px; }
+		}
+
+		&:hover b,
+		&:hover span,
+		&:focus b,
+		&:focus span,
+		&:active b,
+		&:active span { letter-spacing:0 }
 	
-	figure figcaption { 
-		position: absolute; left: 0;
+		&:hover span,
+		&:focus span,
+		&:active span {opacity:1}
+	}
+}
+[role="navigation"] {
+	a { width: 20%; }
+	[role="search"] { 
+		border: {
+			width: 0 0 0 1px;
+			style: solid;
+			color: $white;
+		}
+		padding: 0 0.5%;
+		width: 19%; 
+		display: inline-block;
+		form {
+			display: inline; 
+			input { margin: 0 2px; padding: 0 3px; border: none; background: transparent; color: $white; }
+		}
+	}
+}	
+	
+	[role="menubar"] ol { padding-left: 0; margin: auto 10px; }
+	
+
+[role="listbox"] { 
+	width: 1174px; margin: 10px auto; padding: 0; 
+	li { display: inline; }	
+}
+[role="listbox"] a,
+[role="menuitem"] a { 
+	display: inline-block; margin: 0 10px; 
+	&:hover { text-decoration: none; }
+}
+
+
+time { font-size: 0.675em; font-style:oblique; }
+	
+
+.angular-tabbed {
+    position: relative;
+    margin: 0; padding: 0;
+    overflow: hidden;
+	
+	figcaption { 
+		position: absolute;
 		margin: 0; padding: 0;
 		display: block; 
-	}
-	
-	[role="marquee"] figure figcaption {
-		bottom: 0;		
-	}
-	
-	[role="alert"] aside figure {
-		width:300px; 
-		height: 200px; 
-		border: 1px solid rgb(255,255,255);
-	}
-	
-	[role="alert"] aside figure figcaption { 
-		top: 0; 
-		width: 100px; 
-		line-height: 30px; 
-		text-align: center; 
-		border-bottom: 1px solid rgb(255,255,255); 
+		width: 33%;    
 		text-transform:capitalize;
 		z-index: 1;
+	
+		 aside { 
+			position: relative; top:0; left:-1px;
+			margin: 0; 
+			z-index: 2;
+			font-variant: small-caps;    
+		}
 	}
-	[role="alert"] aside figure figcaption p { 
-		position: relative; top:0;left:-1px;
-		margin: 0; 
-		text-align: center; 
-		line-height: 30px;
-		text-transform:capitalize;
-		z-index: 2;
-		border-left: 1px solid rgb(255,255,255); 
-	}
-	[role="alert"] aside figure figcaption:after {
+
+	.tabbed:after {
 		position: absolute;
 		top: 0;
-		right: -15px;
 		display: block;
 		content:" ";
-		width: 130px;
-		height: 30px;
-		transform:skewX(135deg);
-		-ms-transform:skewX(135deg);
-		-webkit-transform:skewX(135deg);
-		border-right: 1px solid rgb(255,255,255);
-		background: $blackalpha7;
 		z-index: 1;	
+		background: $blackalpha7;
+		@include vendor-prefix(transform, skewX(135deg)); 
 	}
+}
 
+$slider-nav-hard: rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0);
 
+[role="marquee"] {
+	@include breakpoint($break-supper){
+		display: none;
+	}
+ 
+	@include breakpoint($break-supper, min){
+		position: relative; 
+		padding-top: 0.1%; 
+
+		.slider-nav {
+			position: absolute; top: 56px;
+			background-color: $blueprint;
+			width: 200px;
+			line-height: 449px;
+			text-align: center;
+			font-size: 11.5em;
+			//border-top: 1px solid $white;
+			@include vendor-prefix(background-size, 8px 8px);
+		}
+		#left {
+			left: 0;
+			@include angled( $slider-nav-hard, "-45deg");
+		}
+		 #right {
+			right: 0;
+			@include angled( $slider-nav-hard, "45deg");
+		}
+		&:hover { text-decoration: none; outline: none; }
+		header {
+			width: 1172px;
+			border-width: 1px 1px 0;
+			border-style: solid;
+			border-color: $white; 
+			padding: 10px 0;
+		
+			aside { right: 10px; }
+		}
+	}
+}
+
+[role="slider"] { 
+	border: 1px solid $white; overflow: hidden; 
+
+	figure { 
+		width: 1172px; margin: auto; border-width: 0 1px; border-style: solid; border-color: $white; 
+
+		img { }
+
+		figcaption { 
+			width: 80%; height: 100px; bottom:0; right: -50px;
+
+			aside { margin: 0; padding-left: 70px; text-align: left; }
+		}
+
+		figcaption:after { width: 100%; height: 100%; }
+	}
+}
+
+[role="alert"] { 
+	margin-bottom: 1.5rem; 
+	figure { 
+		width:300px; 
+		height: 200px; 
+		border: 1px solid $white;
+		@include breakpoint($break-mornos, min){ 
+			min-height: 200px;
+			float: left; 
+			margin-right: 1.5em; 
+			margin-bottom: 1.5em;
+			padding-bottom: 1.5em;
+		}
+		figcaption { top: 0; left: 0; text-align: center; line-height: 30px; border-bottom: 1px solid $white;  
+			aside { margin: 0; border-left: 1px solid $white; }
+			p { margin: 0; }
+		}
+		figcaption:after { width: 130px; height: 30px; right: -15px; border-right: 1px solid $white; }
+	}
+}
+
+[role="columnheader"] { 
+	width: 100%; line-height: 48px; position: relative; 
+	.headlines & { 
+		border: 1px solid $white; 
+		aside menu li a { border-left: 1px solid $white;  padding: 15px 20px; }
+	}
+	h2 { margin: 0; padding: 0; 
+		a { display: block; padding: 0 20px; width: 50px; }
+		#news h2 &:after {
+			position: absolute;
+			top: 0;
+			padding-right: 50px;
+			display: block;
+			content:" ";
+			z-index: 1;
+			width: 50px;
+			height: 100%; 
+			border-right: 1px solid $white; 
+			@include vendor-prefix(transform, skewX(135deg)); 
+		}
+	}
+	aside { 
+		position: absolute; right: 0; top:0; padding: 0; 
+	
+		menu { margin: 0; padding: 0; }
+	}
+}
+		
+	
+[role="document"] { 
+	@media screen and (min-width: $break-mornos) {
+		float: left; 
+		@include column(8);
+	}
+}
+[role="complementary"] {
+	@media screen and (min-width: $break-mornos) {
+		float: left; 
+		@include column(4);
+	}
+}
+
+footer {
+	border: {
+		width: 1px 0 0;
+		style: solid;
+		color: $white
+	}
+	background-color: $blueprint;
+	min-height: 250px;
+	@include column(12, $padding: 0);
+	@include vendor-prefix(background-size, 5px 5px);
+	@include angled( $slider-nav-hard, "0deg");
+
+	[role="contentinfo"] {
+		margin: 0 auto;
+		width: 1174px;
+		div {
+			@include column(4);
+			float: left;
+		}
+	}
+}
 
 
