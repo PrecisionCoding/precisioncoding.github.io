@@ -1,42 +1,104 @@
+var styleSwitcher = document.getElementsByName("newsView");
+var storedClassName = localStorage.getItem("bodyClassName");
+
+
 function cssLoaded(href) {
-    var cssFound = false;
+	var cssFound = false;
 
-    if (document.styleSheets != null) {
-        for (var i = 0; i < document.styleSheets.length; i++) {
-            var sheet = document.styleSheets[i];
-            
-            if (sheet['href'].indexOf(href) >= 0 ){
-                var rules = sheet.cssRules || sheet.rules;
-                if (rules != null && rules.length > 0) {
-                    cssFound = true;
-                } else {
-                    return;
-                }
-            }
-        };
-    }
-
-
-    return cssFound;
+	if (document.styleSheets != null) {
+		for (var i = 0; i < document.styleSheets.length; i++) {
+			var sheet = document.styleSheets[i];
+			
+			if (sheet['href'].indexOf(href) >= 0 ){
+				var rules = sheet.cssRules || sheet.rules;
+				if (rules != null && rules.length > 0) {
+					cssFound = true;
+				}
+			}
+		}
+	}
+	return cssFound;
 }
 
 if (!cssLoaded('//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css')) {
-    local_bootstrap = document.createElement('link');
-    local_bootstrap.setAttribute("rel", "stylesheet");
-    local_bootstrap.setAttribute("href", "/css/helpers/font-awesome/4.0.1/css/font-awesome.min.css");
-    document.getElementsByTagName("head")[0].appendChild(local_bootstrap);
+	local_bootstrap = document.createElement('link');
+	local_bootstrap.setAttribute("rel", "stylesheet");
+	local_bootstrap.setAttribute("href", "css/helpers/font-awesome/4.0.1/css/font-awesome.min.css");
+	document.getElementsByTagName("head")[0].appendChild(local_bootstrap);
 }
 
-(function ($) {
-    var windowWidth = $(window).width();
-    var mediabreaks = [320, 480, 568, 768, 960, 1174];
+function addEvent(type, to, fn) {
+	if (document.addEventListener) {
+		to.addEventListener(type, fn, false);
+	} else if (document.attachEvent) {
+		to.attachEvent('on' + type, fn);
+	} else {
+		to[type] = fn;
+	}
+};
 
-    //for (var m = 0; m < mediabreaks.length; m++) {
-    //    if (windowWidth >= mediabreaks[m]) {
-    var sliderWidth = $('[role="slider"] figure').width();
-    $('.slider-nav').width(((windowWidth - 4) - sliderWidth) / 2 );
-    //    }
-    //}
+function trigger(action, el) {
+	if (document.createEvent) {
+		var event = document.createEvent('HTMLEvents');
+		event.initEvent(action, true, false);
+		el.dispatchEvent(event);
+	} else {
+		el.fireEvent('on' + action);
+	}
+}
+
+
+
+function switchStyles() {
+	var styleSwitch = "";
+	for (var i = 0; i < styleSwitcher.length; i++) {
+		if (styleSwitcher[i].checked == true) {
+			styleSwitch = styleSwitcher[i].value;
+		}
+	}
+
+	console.log(styleSwitch);
+
+	if (localStorage.length && localStorage.key("bodyClassName")) {
+	    if (document.body.classList.contains(localStorage.getItem("bodyClassName"))) {
+	        document.body.classList.remove(localStorage.getItem("bodyClassName"));
+	    }
+	    localStorage.removeItem('bodyClassName');
+	}
+
+	document.body.classList.add(styleSwitch);
+	localStorage.setItem("bodyClassName", styleSwitch);
+}
+
+if (storedClassName) {
+	console.log("stored");
+	for (var i = 0; i < styleSwitcher.length; i++) {
+		if (styleSwitcher[i].value === storedClassName) {
+			styleSwitcher[i].checked = true;
+			trigger("change", styleSwitcher);
+		}
+	}
+}
+
+addEvent(styleSwitcher, 'click', switchStyles);
+
+(function ($) {
+	$(window).resize(function() {
+		if(windowWidth != $(window).width()){
+			location.reload();
+			return;
+		}
+	});
+
+	var windowWidth = $(window).width();
+	var mediabreaks = [320, 480, 568, 768, 960, 1174];
+
+	//for (var m = 0; m < mediabreaks.length; m++) {
+	//    if (windowWidth >= mediabreaks[m]) {
+	var sliderWidth = $('[role="slider"] div:first').width();
+	$('.slider-nav').width(((windowWidth - 4) - sliderWidth) / 2 );
+	//    }
+	//}
 	
 	var iPhone5Width = 320;
 	var iPhone5Height = 568;

@@ -1,0 +1,41 @@
+ $browser-context: 16; // Default
+
+@function em($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}em
+}
+//Descriptive Variables: 
+/* ========================================================================== */
+//Colours:
+
+$black:			rgb(0,0,0);
+$blackalpha0:	rgba(0,0,0,0);
+$blackalpha3:	rgba(0,0,0,0.3);
+$blackalpha5:	rgba(0,0,0,0.5);
+$blackalpha7:	rgba(0,0,0,0.7);
+
+$white:			rgb(255,255,255);
+$whitealpha0:	rgba(255,255,255,0);
+$whitealpha3:	rgba(255,255,255,0.3);
+$whitealpha5:	rgba(255,255,255,0.5);
+$whitealpha7:	rgba(255,255,255,0.7);
+
+$blueprint:		rgb(59,89,152);
+//$blueprint:		rgb(25,37,64);
+
+//FontStacks
+$avenir: "Avenir", Futura, Helvetica, sans-serif;
+
+//media query breakpoints:
+$break-fast: 320px;
+$break-brunch: 480px;
+$break-elevenses: 568px;
+$break-lunch: 620px;
+$break-tea: 680px;
+$break-supper: 960px;
+$break-dinner : 1174px;
+
+//GRIDWORK
+$columns: 12; 
+$max-page-width: $break-dinner; /* Even though we mean pixels, we leave out 'px' so that the mixing below can perform calculations on it. */ 
+$column-width: $max-page-width/$columns;
+$column-padding: 1rem;

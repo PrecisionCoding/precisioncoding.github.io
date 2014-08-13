@@ -3,59 +3,89 @@
    ========================================================================== */
 
 .ir {
-    background-color: transparent;
-    border: 0;
-    overflow: hidden;
-    *text-indent: -9999px;
+	background-color: transparent;
+	border: 0;
+	overflow: hidden;
+	*text-indent: -9999px;
 }
 
 .ir:before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 150%;
+	content: "";
+	display: block;
+	width: 0;
+	height: 150%;
 }
 
 .hidden {
-    display: none !important;
-    visibility: hidden;
+	display: none !important;
+	visibility: hidden;
 }
 
 .visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
 }
 
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
 }
 
 .invisible {
-    visibility: hidden;
+	visibility: hidden;
 }
 
-.clearfix:before,
-.clearfix:after {
-    content: " ";
-    display: table;
-}
+//.clearfix:before,
+//.clearfix:after {
+//    content: " ";
+//    display: table;
+//}
+//
+//.clearfix:after {
+//    clear: both;
+//}
+//
+//.clearfix {
+//    *zoom: 1;
+//}
 
-.clearfix:after {
-    clear: both;
+%warning-template {
+	display: block;
+	border: 1px solid;
+	margin: 10px 20px;
+	padding:15px 10px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	@include vendor-prefix("border-radius",".5em");
 }
-
-.clearfix {
-    *zoom: 1;
+.isa_info {
+	@extend %warning-template;
+	color: #00529B;
+	background-color: #BDE5F8;
+}
+.isa_success {
+	@extend %warning-template;
+	color: #4F8A10;
+	background-color: #DFF2BF;
+}
+.isa_warning {
+	@extend %warning-template;
+	color: #9F6000;
+	background-color: #FEEFB3;
+}
+.isa_error {
+	@extend %warning-template;
+	color: #D8000C;
+	background-color: #FFBABA;
 }

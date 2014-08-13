@@ -7,38 +7,58 @@
 }
 
 @mixin angled($colors, $direction: "to bottom") {  
-    $stripe-width: 100% / length($colors);
-    $auto:         if( type-of(nth($colors, 1)) == list, false, true );
-    $gradient:     ();
-    
-    @for $i from 1 through length($colors) {
-        $item: nth($colors, $i);
-        $dump: ();
-      
-        @if $auto == true {
-            $dump: $item $stripe-width * ($i - 1), $item $stripe-width * $i;
-        }
-      
-        @else {   
-            @if $i > 1 {
-                $previous-item: nth($colors, $i - 1);
-                $dump: append($dump, nth($item, 1) nth($previous-item, 2));
-            }
-            $dump: append($dump, $item);
-        }
+	$stripe-width: 100% / length($colors);
+	$auto:         if( type-of(nth($colors, 1)) == list, false, true );
+	$gradient:     ();
+	
+	@for $i from 1 through length($colors) {
+		$item: nth($colors, $i);
+		$dump: ();
+	  
+		@if $auto == true {
+			$dump: $item $stripe-width * ($i - 1), $item $stripe-width * $i;
+		}
+	  
+		@else {   
+			@if $i > 1 {
+				$previous-item: nth($colors, $i - 1);
+				$dump: append($dump, nth($item, 1) nth($previous-item, 2));
+			}
+			$dump: append($dump, $item);
+		}
 
-        $gradient: join($gradient, $dump, comma);
-    }		
+		$gradient: join($gradient, $dump, comma);
+	}		
 
-    @include background-image(linear-gradient($direction, $gradient));
+	@include background-image(linear-gradient($direction, $gradient));
 
 }
 
-@mixin breakpoint($size, $set: "max") { 
- @media only screen and (#{$set}-width: $size) { @content; } 
+@mixin breakpoint( $break, $set: "max-width", $media: "screen") { 
+	@media only #{$media} and (#{$set}: $break) { @content; } 
 }
 
 @mixin column($amount, $padding: $column-padding) { 
 	width: percentage(($column-width * $amount) / $max-page-width); 
 	padding: $padding; 
+	@include breakpoint( $break-brunch, min-width) { float: left; }
+	@include breakpoint( $break-fast ) { float: none; }
 } 
+
+@mixin clearfix() {
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+	*zoom: 1;
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
