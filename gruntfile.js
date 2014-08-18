@@ -59,14 +59,14 @@ module.exports = function (grunt) {
 		connect: {
 			options: {
 				port: 9000,
-				hostname: '*'
+				livereload: LIVERELOADPORT,
+				hostname: 'localhost'
 			},
 			livereload: {
 				options: {
-					middleware: function (connect) {
-						return [lrSnippet, mountFolder(connect, 'app')];
-					}
-				}
+                    open: true,
+                    base: '<%= project.app %>'
+                }
 			}
 		},
 
@@ -149,7 +149,7 @@ module.exports = function (grunt) {
 				},
 			},
 			css: {
-				files: '<%= project.app %>/sass/{,*/}*.{scss,sass}',
+				files: '<%= project.app %>/sass/**/*.scss',
 				tasks: ['compass'],
 				options: {
 					spawn: false,
@@ -158,13 +158,12 @@ module.exports = function (grunt) {
 			},
 			livereload: {
 				options: {
-					livereload: LIVERELOAD_PORT
+					livereload: '<%= connect.options.livereload %>'
 				},
 				files: [
 					'<%= project.app %>/**/*.html',
 					'<%= project.app %>/css/**/*.css',
-					'<%= project.app %>/js/**/*.js',
-					'<%= project.app %>/img/**/*.{png,jpg,jpeg,gif,webp,svg}'
+					'<%= project.app %>/js/**/*.js'
 				]
 			}
 		}
