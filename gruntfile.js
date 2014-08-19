@@ -1,18 +1,6 @@
 ﻿
 'use strict';
 
-/**
- * Livereload and connect variables
- */
-var LIVERELOAD_PORT = 35729;
-var lrSnippet = require('connect-livereload')({
-  port: LIVERELOAD_PORT
-});
-
-var mountFolder = function (connect, dir) {
-	return connect.static(require('path').resolve(dir));
-};
-
 module.exports = function (grunt) {
 	/**
 	* Dynamically load npm tasks
@@ -51,24 +39,7 @@ module.exports = function (grunt) {
 					' */\n'
 		},
 
-		/*** Connect port/livereload
-			* https://github.com/gruntjs/grunt-contrib-connect
-			* Starts a local webserver and injects
-			* livereload snippet
-			*/
-		connect: {
-			options: {
-				port: 9000,
-				livereload: LIVERELOADPORT,
-				hostname: 'localhost'
-			},
-			livereload: {
-				options: {
-                    open: true,
-                    base: '<%= project.app %>'
-                }
-			}
-		},
+
 
     	/*** Compass
 			* https://www.npmjs.org/package/grunt-contrib-compass
@@ -116,14 +87,6 @@ module.exports = function (grunt) {
 			}
 		},
 
-		/*** Opens the web server in the browser
-			* https://github.com/jsoverson/grunt-open
-			*/
-		open: {
-			server: {
-				path: 'http://localhost:<%= connect.options.port %>'
-			}
-		},
 
 		/*** Runs tasks against changed watched files
 			 * https://github.com/gruntjs/grunt-contrib-watch
@@ -155,16 +118,6 @@ module.exports = function (grunt) {
 					spawn: false,
 					reload: true
 				}
-			},
-			livereload: {
-				options: {
-					livereload: '<%= connect.options.livereload %>'
-				},
-				files: [
-					'<%= project.app %>/**/*.html',
-					'<%= project.app %>/css/**/*.css',
-					'<%= project.app %>/js/**/*.js'
-				]
 			}
 		}
 	});
@@ -174,8 +127,6 @@ module.exports = function (grunt) {
 		'compass',
 		'concat',
 		'uglify',
-		'connect:livereload',
-		'open',
     	'watch'
 	]);
 
