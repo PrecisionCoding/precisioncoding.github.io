@@ -2,319 +2,575 @@
    Author's custom styles
    ========================================================================== */
 
-.unbulleted { margin: 0; padding: 0; }
-.unbulleted li { list-style-type: none; margin: auto 0; padding: 0; display: inline-block; }
-.unbulleted li a:hover { text-decoration: none; }
-
-a{
-	&:link, &:visited, &:hover, &:active { color: $white; text-decoration: none; }
-	&:hover, &:active { color: $white; text-decoration: underline; }
+.unbulleted {
+  margin: 0;
+  padding: 0;
 }
-nav a {	margin: 0; padding: 0; }
+
+.unbulleted li {
+  list-style-type: none;
+  margin: auto 0;
+  padding: 0;
+  display: inline-block;
+}
+
+.unbulleted li a:hover {
+  text-decoration: none;
+}
+
+.menubar-toggler {
+  position: absolute;
+  right: 6.125%;
+  top: 1%;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  z-index: 110;
+  span {
+    position: absolute;
+    display: block;
+    content: '';
+    &:before, &:after {
+      cursor: pointer;
+      height: 25px;
+      background: rgb(255, 255, 255);
+      position: absolute;
+      display: block;
+      content: '';
+    }
+    &:before {
+      left: -10px;
+      width: 10px;
+    }
+    &:after {
+      right: -6px;
+      width: 5px;
+    }
+    transition: all 500ms ease-in-out;
+    &:before, &:after {
+      transition: all 500ms ease-in-out;
+    }
+  }
+  &.active span {
+    background-color: transparent;
+    &:before, &:after {
+      left: -5px;
+    }
+    &:before {
+      transform: rotate(45deg);
+      width: 5px;
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+a {
+  &:link, &:visited, &:hover, &:active {
+    color: $white;
+    text-decoration: none;
+  }
+  &:hover, &:active {
+    color: $white;
+    text-decoration: underline;
+  }
+}
+
+nav a {
+  margin: 0;
+  padding: 0;
+}
 
 /*51,102,255*/
-body { 
-	@extend body;
-	background-color: $blueprint; 
-	color: $white; 
-	font-family: $avenir;
-	-webkit-font-smoothing: antialiased;
+body {
+  @extend body;
+  background-color: $blueprint;
+  background-image: url(../img/grid-offset.png);
+  background-repeat: repeat;
+  background-origin: content-box;
+  background-size: auto;
+  color: $white;
+  font-family: $avenir;
+  -webkit-font-smoothing: antialiased;
 }
 
-[role="banner"] { margin-bottom: 1.5rem; position: relative; }
-
-[role="toolbar"] { text-align: center; }
-	
-	[role="heading"], [role="marquee"] [role="columnheader"], [role="navigation"], main { 
-		@include breakpoint($break-brunch, min-width){ width: $break-dinner; }
-		margin: 0 auto; 
-		padding: 0.1% 10px;
-	}
-	[role="heading"],
-	[role="navigation"] {
-		border: {
-			width: 0 1px 1px;
-			style: solid;
-			color: $white; 
-		}
-	}
-	main { margin: 1.5em auto; }
-
-[role="heading"] h1 { 
-	text-align: center; font-size:4.0em; line-height:1.0em; font-weight: 100; 
-	a {
-		strong, b {
-			font-weight: inherit;
-		}
-		b,
-		.flipped { 
-			color: $white; text-decoration: none; 
-			@include vendor-prefix(transition, all 300ms);
-			display: inline-block;
-		}
-		span { font-variant: small-caps; /*opacity: 0;*/ }
-		.flipped { 
-			margin-right: -8px;
-			display: inline-block; 
-			@include vendor-prefix(transform, scaleX(-1));
-			filter: FlipH;		/* IE 6/7/8 */
-			
-			b { opacity: 1; }
-			& + b { margin-left: -8px; }
-		}
-
-		&:hover b,
-		&:hover span,
-		&:focus b,
-		&:focus span,
-		&:active b,
-		&:active span { letter-spacing:0 }
-	
-		&:hover span,
-		&:focus span,
-		&:active span {opacity:1}
-	}
+[role="banner"] {
+  margin-bottom: 1.5rem;
+  position: relative;
 }
+
+[role="toolbar"] {
+  text-align: center;
+}
+
+[role="heading"], [role="marquee"] [role="columnheader"], [role="navigation"], main {
+  @include breakpoint($break-brunch + 1px, "min-width") {
+    width: $break-dinner;
+    margin: 0 auto;
+  }
+
+  padding: 0 10px;
+}
+
+[role="heading"],
 [role="navigation"] {
-	a { width: 20%; }
-	[role="search"] { 
-		border: {
-			width: 0 0 0 1px;
-			style: solid;
-			color: $white;
-		}
-		padding: 0 0.5%;
-		width: 19%; 
-		display: inline-block;
-		form {
-			display: inline; 
-			input { 
-				margin: 0 2px; 
-				padding: 0 3px; 
-				border: none; 
-				background: transparent; 
-				color: $white;
-				&:focus { outline: none; } 
-			}
-		}
-	}
-}	
-	
-	[role="menubar"] ol { padding-left: 0; margin: auto 10px; }
-	
-
-[role="listbox"] { 
-	width: 1174px; margin: 10px auto; padding: 0; 
-	li { display: inline; }	
+  @include breakpoint($break-brunch + 1px, "min-width") {
+    border: {
+      width: 0 1px 1px;
+      style: solid;
+      color: $white;
+    };
+  }
 }
+
+main {
+  margin: 1.5em auto;
+}
+
+$flippedSet: -4px;
+
+.flipped b {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-family: $book-antiqua;
+  font-weight: 100;
+  color: $white;
+  text-decoration: none;
+  &:first-of-type {
+    margin-right: $flippedSet;
+    @include vendor-prefix(transition, all 300ms);
+    @include vendor-prefix(transform, scaleX(-1));
+    filter: FlipH;
+    /* IE 6/7/8 */
+  }
+  & + b {
+    margin-left: $flippedSet;
+  }
+}
+
+[role="heading"] h1 {
+  text-align: center;
+  line-height: 25px;
+  font-weight: 100;
+  font-family: $book_antiqua;
+  text-shadow: rgb(0, 0, 0) 1px 1px;
+  @include breakpoint($break-elevenses) {
+    font-size: 1.2em;
+  }
+
+  @include breakpoint($break-elevenses + 1px, "min-width") {
+    font-size: 4.0em;
+  }
+
+  a {
+    strong, b {
+      font-weight: inherit;
+    }
+    &:hover b,
+    &:hover span,
+    &:focus b,
+    &:focus span,
+    &:active b,
+    &:active span {
+      letter-spacing: 0;
+      text-decoration: none;
+    }
+    &:hover span,
+    &:focus span,
+    &:active span {
+      opacity: 1;
+    }
+    span {
+      font-variant: small-caps;
+      /*opacity: 0;*/
+    }
+  }
+}
+
+[role="navigation"] {
+  @include breakpoint($break-fast) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 13.125%;
+    border-right: 1px solid $white;
+    background-color: $blueprintAlpha9;
+    z-index: 100;
+    padding: 0;
+  }
+
+  a {
+    display: block;
+    font-family: $book-antiqua;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position: 10px center;
+    background-clip: border-box;
+    @include breakpoint($break-fast) {
+      line-height: 50px;
+      height: 49px;
+      margin-bottom: 1px;
+      .navigation__link--slider {
+        margin-left: 100%;
+        height: 100%;
+        display: none;
+        text-shadow: 1px 1px #000;
+        background-color: $blueprintAlpha9;
+        padding-right: 10px;
+        padding-left: 10px;
+        border: {
+          width: 1px 1px 1px 0;
+          color: $white;
+          style: solid;
+        };
+      }
+    }
+
+    @include breakpoint($break-elevenses + 1px, "min-width") {
+      display: inline-block;
+      width: 20%;
+    }
+
+    &.portfolio {
+      background-image: url(../img/compass-16.svg);
+      //      background-size: 11px 16px;
+      //      background-size: 16px 25px;
+      background-size: 22px 32px;
+    }
+    &.chronicles {
+      background-image: url(../img/chronicles-16.svg);
+      //      background-size: 12px 16px;
+      background-size: 22px 32px;
+    }
+    &.experiments {
+      background-image: url(../img/experiments-16.svg);
+      //      background-size: 16px 15px;
+      background-size: 22px 21px;
+    }
+    &.interactions {
+      background-image: url(../img/interaction-16.svg);
+      //      background-size: 16px 15px;
+      background-size: 22px 21px;
+    }
+  }
+}
+
+[role="search"] {
+  border: {
+    width: 0 0 0 1px;
+    style: solid;
+    color: $white;
+  };
+  padding: 0 0.5%;
+  width: 19%;
+  display: inline-block;
+  form {
+    display: inline;
+    input {
+      margin: 0 2px;
+      padding: 0 3px;
+      border: none;
+      background: transparent;
+      color: $white;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+[role="menubar"] {
+  position: absolute;
+  top: 0;
+  right: -13.125%;
+  height: 100%;
+  width: 13.125%;
+  border-left: 1px solid rgb(255, 255, 255);
+  background-color: rgba(51, 89, 165, 0.9);
+  z-index: 100;
+  padding: 0;
+  transition: 1s ease-in-out;
+  ol {
+    padding-left: 0;
+    margin: 50px auto 0;
+  }
+  &.slideOut {
+    transform: translate(-100%, 0);
+  }
+}
+
+[role="listbox"] {
+  width: 1174px;
+  margin: 10px auto;
+  padding: 0;
+  li {
+    display: inline;
+  }
+}
+
 [role="listbox"] a,
-[role="menuitem"] a { 
-	display: inline-block; margin: 0 10px; 
-	&:hover { text-decoration: none; }
+[role="menuitem"] a {
+  display: inline-block;
+  margin: 0 10px;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
-
-time { font-size: 0.675em; font-style:oblique; }
-	
+time {
+  font-size: 0.675em;
+  font-style: oblique;
+}
 
 .angular-tabbed {
-	position: relative;
-	margin: 0; padding: 0;
-	overflow: hidden;
-	
-	figcaption { 
-		position: absolute;
-		margin: 0; padding: 0;
-		display: block; 
-		width: 33%;    
-		text-transform:capitalize;
-		z-index: 1;
-	
-		 aside { 
-			position: relative; top:0; left:-1px;
-			margin: 0; 
-			z-index: 2;
-			font-variant: small-caps;    
-		}
-	}
-
-	.tabbed:after {
-		position: absolute;
-		top: 0;
-		display: block;
-		content:" ";
-		z-index: 1;	
-		background: $blackalpha7;
-		@include vendor-prefix(transform, skewX(135deg)); 
-	}
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  figcaption {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: 33%;
+    text-transform: capitalize;
+    z-index: 1;
+    aside {
+      position: relative;
+      top: 0;
+      left: -1px;
+      margin: 0;
+      z-index: 2;
+      font-variant: small-caps;
+    }
+  }
+  .tabbed:after {
+    position: absolute;
+    top: 0;
+    display: block;
+    content: " ";
+    z-index: 1;
+    background: $blackalpha7;
+    @include vendor-prefix(transform, skewX(135deg));
+  }
 }
 
 $slider-nav-hard: rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0);
 
 [role="marquee"] {
-	@include breakpoint($break-supper){
-		display: none;
-	}
- 
-	@include breakpoint($break-supper, min-width ){
-		position: relative; 
-		padding-top: 0.1%; 
+  @include breakpoint($break-supper) {
+    display: none;
+  }
 
-		.slider-nav {
-			position: absolute; top: 56px;
-			background-color: $blueprint;
-			width: 200px;
-			line-height: 447px;
-			text-align: center;
-			font-size: 11.5em;
-			//border-top: 1px solid $white;
-			@include vendor-prefix(background-size, 8px 8px);
-		}
-		#left {
-			left: 0;
-			@include angled( $slider-nav-hard, "-45deg");
-		}
-		 #right {
-			right: 0;
-			@include angled( $slider-nav-hard, "45deg");
-		}
-		&:hover { text-decoration: none; outline: none; }
-		header {
-			width: 1174px;
-			border-width: 1px 1px 0;
-			border-style: solid;
-			border-color: $white; 
-			padding: 10px 0;
-		
-			aside { right: 10px; }
-		}
-	}
+  @include breakpoint($break-supper, min-width) {
+    position: relative;
+    padding-top: 0.1%;
+    .slider-nav {
+      position: absolute;
+      top: 56px;
+      background-color: $blueprint;
+      width: 200px;
+      line-height: 447px;
+      text-align: center;
+      font-size: 11.5em;
+      //border-top: 1px solid $white;
+      @include vendor-prefix(background-size, 8px 8px);
+    }
+    #left {
+      left: 0;
+      @include angled($slider-nav-hard, "-45deg");
+    }
+    #right {
+      right: 0;
+      @include angled($slider-nav-hard, "45deg");
+    }
+    &:hover {
+      text-decoration: none;
+      outline: none;
+    }
+    header {
+      width: 1174px;
+      border-width: 1px 1px 0;
+      border-style: solid;
+      border-color: $white;
+      padding: 10px 0;
+      aside {
+        right: 10px;
+      }
+    }
+  }
 }
 
-[role="slider"] { 
-	border: {
-		width: 1px;
-		style: solid;
-		color: $white; 
-	}
-	height: 450px;
-	overflow: hidden; 
-
-	div:first-of-type {
-		margin: auto; 
-		border: {
-			width: 0 1px; 
-			style: solid; 
-			color: $white;
-		}
-		 width: 1174px; 
-		figure { 
-		 //display: inline-block;
-
-			img { }
-
-			figcaption { 
-				width: 80%; height: 100px; bottom:0; right: -50px;
-
-				aside { margin: 0; padding-left: 70px; text-align: left; }
-			}
-
-			figcaption:after { width: 100%; height: 100%; }
-		}
-	}
+[role="slider"] {
+  border: {
+    width: 1px;
+    style: solid;
+    color: $white;
+  };
+  height: 450px;
+  overflow: hidden;
+  div:first-of-type {
+    margin: auto;
+    border: {
+      width: 0 1px;
+      style: solid;
+      color: $white;
+    };
+    width: 1174px;
+    figure {
+      //display: inline-block;
+      img {}
+      figcaption {
+        width: 80%;
+        height: 100px;
+        bottom: 0;
+        right: -50px;
+        aside {
+          margin: 0;
+          padding-left: 70px;
+          text-align: left;
+        }
+      }
+      figcaption:after {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
 }
 
-[role="alert"] { 
-	margin-bottom: 1.5rem; 
-	figure { 
-		width:300px; 
-		height: 200px; 
-		border: 1px solid $white;
-		@include breakpoint($break-brunch, min-width){ 
-			min-height: 200px;
-			float: left; 
-			margin-right: 1.5em; 
-			margin-bottom: 1.5em;
-			padding-bottom: 1.5em;
-		}
-		figcaption { top: 0; left: 0; text-align: center; line-height: 30px; border-bottom: 1px solid $white;  
-			aside { margin: 0; border-left: 1px solid $white; }
-			p { margin: 0; }
-		}
-		figcaption:after { width: 130px; height: 30px; right: -15px; border-right: 1px solid $white; }
-	}
+[role="alert"] {
+  margin-bottom: 1.5rem;
+  figure {
+    width: 300px;
+    height: 200px;
+    border: 1px solid $white;
+    @include breakpoint($break-brunch, min-width) {
+      min-height: 200px;
+      float: left;
+      margin-right: 1.5em;
+      margin-bottom: 1.5em;
+      padding-bottom: 1.5em;
+    }
+
+    figcaption {
+      top: 0;
+      left: 0;
+      text-align: center;
+      line-height: 30px;
+      border-bottom: 1px solid $white;
+      aside {
+        margin: 0;
+        border-left: 1px solid $white;
+      }
+      p {
+        margin: 0;
+      }
+    }
+    figcaption:after {
+      width: 130px;
+      height: 30px;
+      right: -15px;
+      border-right: 1px solid $white;
+    }
+  }
 }
 
-[role="columnheader"] { 
-	width: 100%; line-height: 48px; position: relative; 
-	.headlines & { 
-		border: 1px solid $white; 
-		aside menu li a { border-left: 1px solid $white;  padding: 15px 20px; }
-	}
-	h2 { margin: 0; padding: 0; 
-		a { display: block; padding: 0 20px; width: 50px; }
-		#news h2 &:after {
-			position: absolute;
-			top: 0;
-			padding-right: 50px;
-			display: block;
-			content:" ";
-			z-index: 1;
-			width: 50px;
-			height: 100%; 
-			border-right: 1px solid $white; 
-			@include vendor-prefix(transform, skewX(135deg)); 
-		}
-	}
-	aside { 
-		position: absolute; right: 0; top:0; padding: 0; 
-	
-		menu { 
-			margin: 0; padding: 0; 
-			.pointer { cursor: pointer; }
-		}
-	}
+[role="columnheader"] {
+  width: 100%;
+  line-height: 48px;
+  position: relative;
+  .headlines & {
+    border: 1px solid $white;
+    aside menu li a {
+      border-left: 1px solid $white;
+      padding: 15px 20px;
+    }
+  }
+  h2 {
+    margin: 0;
+    padding: 0;
+    a {
+      display: block;
+      padding: 0 20px;
+      width: 50px;
+    }
+    #news h2 &:after {
+      position: absolute;
+      top: 0;
+      padding-right: 50px;
+      display: block;
+      content: " ";
+      z-index: 1;
+      width: 50px;
+      height: 100%;
+      border-right: 1px solid $white;
+      @include vendor-prefix(transform, skewX(135deg));
+    }
+  }
+  aside {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0;
+    menu {
+      margin: 0;
+      padding: 0;
+      .pointer {
+        cursor: pointer;
+      }
+    }
+  }
 }
-		
-	
-[role="document"] { 
-	@include column(8);
+
+[role="document"] {
+  @include breakpoint("break-elevenses" + 1px, "min-width") {
+    @include column(8);
+  }
 }
+
 [role="complementary"] {
-	@include column(4);
+  @include breakpoint("break-elevenses" + 1px, "min-width") {
+    @include column(4);
+  }
 }
 
 footer {
-	border: {
-		width: 1px 0;
-		style: solid;
-		color: $white
-	}
-	background-color: $blueprint;
-	margin-bottom: 1.5em;
-	min-height: 250px;
-	@include column(12, $padding: 0);
-	@include vendor-prefix(background-size, 5px 5px);
-	@include angled( $slider-nav-hard, "0deg");
+  border: {
+    width: 1px 0;
+    style: solid;
+    color: $white;
+  };
+  background-color: $blueprint;
+  margin-bottom: 1.5em;
+  @include breakpoint($break-brunch, "min-width") {
+    min-height: 250px;
+  }
 
-	[role="contentinfo"] {
-		margin: 0 auto;
-		width: $break-dinner;
-		section {
-			background-color: $blueprint;
-			min-height: 250px;
-			border: {
-				width: 0 1px 0;
-				style: solid;
-				color: $white
-			}
-			@include column(4);
-			@include vendor-prefix(background-size, 5px 5px);
-			@include angled( $slider-nav-hard, "90deg");
-
-			h4 { text-align: center; }
-		}
-	}
+  @include column(12, $padding: 0);
+  @include vendor-prefix(background-size, 5px 5px);
+  @include angled($slider-nav-hard, "0deg");
+  [role="contentinfo"] {
+    margin: 0 auto;
+    width: $break-dinner;
+    section {
+      background-color: $blueprint;
+      min-height: 250px;
+      border: {
+        width: 0 1px 0;
+        style: solid;
+        color: $white;
+      };
+      @include column(4);
+      @include vendor-prefix(background-size, 5px 5px);
+      @include angled($slider-nav-hard, "90deg");
+      h4 {
+        text-align: center;
+      }
+    }
+  }
 }
-
-

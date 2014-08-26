@@ -19,11 +19,14 @@ $whitealpha3:	rgba(255,255,255,0.3);
 $whitealpha5:	rgba(255,255,255,0.5);
 $whitealpha7:	rgba(255,255,255,0.7);
 
-$blueprint:		rgb(51,89,165);
+$blueprint:			rgb(51,89,165);
+$blueprintAlpha7: 	rgba(51,89,165,0.7);
+$blueprintAlpha9: 	rgba(51,89,165,0.9);
 //$blueprint:		rgb(25,37,64);
 
 //FontStacks
 $avenir: "Avenir", Futura, Helvetica, sans-serif;
+$book_antiqua: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
 
 //media query breakpoints:
 $break-fast: 320px;

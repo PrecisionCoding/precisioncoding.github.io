@@ -1,6 +1,15 @@
 var styleSwitcher = document.getElementsByName("newsView");
 var storedClassName = localStorage.getItem("bodyClassName");
 
+var addEvent = function(type, to, fn) {
+	if (to.addEventListener) {
+		to.addEventListener(type, fn, false);
+	} else if (to.attachEvent) {
+		to.attachEvent('on' + type, fn);
+	} else {
+		to[type] = fn;
+	}
+}
 
 function cssLoaded(href) {
 	var cssFound = false;
@@ -27,17 +36,9 @@ if (!cssLoaded('//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.cs
 	document.getElementsByTagName("head")[0].appendChild(local_bootstrap);
 }
 
-function addEvent(type, to, fn) {
-	if (document.addEventListener) {
-		to.addEventListener(type, fn, false);
-	} else if (document.attachEvent) {
-		to.attachEvent('on' + type, fn);
-	} else {
-		to[type] = fn;
-	}
-};
 
-function trigger(action, el) {
+
+var trigger = function(action, el) {
 	if (document.createEvent) {
 		var event = document.createEvent('HTMLEvents');
 		event.initEvent(action, true, false);
@@ -81,6 +82,19 @@ if (storedClassName) {
 }
 
 addEvent(styleSwitcher, 'click', switchStyles);
+
+var btn = document.querySelector("#menubar-toggle" );
+
+addEvent('load', document, function(){
+  var ico = document.createElement("span");
+  btn.appendChild(ico);
+});
+
+addEvent( "click", btn, function() {
+  this.classList.toggle( "active" );
+  document.querySelector('[role="menubar"]').classList.toggle('slideOut');
+});
+
 
 (function ($) {
 	$(window).resize(function() {

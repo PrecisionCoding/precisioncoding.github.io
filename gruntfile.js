@@ -39,7 +39,12 @@ module.exports = function (grunt) {
 					' */\n'
 		},
 
-
+//		notify_hooks: {
+//			options: {
+//				enabled: true,
+//				max_jshint_notifications: 5, // maximum number of notifications from jshint output
+//			}
+//		},
 
     	/*** Compass
 			* https://www.npmjs.org/package/grunt-contrib-compass
@@ -112,7 +117,7 @@ module.exports = function (grunt) {
 				},
 			},
 			css: {
-				files: '<%= project.app %>/sass/**/*.scss',
+				files: 'sass/**/*.scss',
 				tasks: ['compass'],
 				options: {
 					spawn: false,
@@ -123,11 +128,13 @@ module.exports = function (grunt) {
 	});
 
 	// 3. Where we tell Grunt what to do when we type "grunt" into the terminal.
-	grunt.registerTask('default', [
-		'compass',
-		'concat',
-		'uglify',
-    	'watch'
-	]);
+	grunt.registerTask(
+		'default', [
+			'compass',
+			'concat',
+			'uglify',
+			'watch'
+		]
+	);
 
 };
