@@ -83,18 +83,29 @@ if (storedClassName) {
 
 addEvent(styleSwitcher, 'click', switchStyles);
 
-var btn = document.querySelector("#menubar-toggle" );
+var menuBarToggler = document.querySelector("#menubar-toggle" );
+var menuBar = document.querySelector('[role="menubar"]');
+
+var navBarToggler = document.querySelector("#navbar-toggle" );
+var navBar = document.querySelector('[role="navigation"]');
+
+  var ico = document.createElement("span");
+  menuBarToggler.appendChild(ico);
+  navBarToggler.appendChild(ico);
 
 addEvent('load', document, function(){
-  var ico = document.createElement("span");
-  btn.appendChild(ico);
+	console.log("loaded");
 });
 
-addEvent( "click", btn, function() {
+addEvent( "click", menuBarToggler, function() {
   this.classList.toggle( "active" );
-  document.querySelector('[role="menubar"]').classList.toggle('slideOut');
+  menuBar.classList.toggle('slideOut');
 });
 
+addEvent( "click", navBarToggler, function() {
+  this.classList.toggle( "active" );
+  navBar.classList.toggle('slideOut');
+});
 
 (function ($) {
 	$(window).resize(function() {
