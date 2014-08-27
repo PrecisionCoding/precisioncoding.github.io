@@ -18,9 +18,8 @@
   text-decoration: none;
 }
 
-.menubar-toggler {
+.toggler {
   position: absolute;
-  right: 6.125%;
   top: 1%;
   width: 0;
   height: 0;
@@ -28,42 +27,45 @@
   margin: 0;
   border: 0;
   z-index: 110;
-  span {
-    position: absolute;
-    display: block;
-    content: '';
-    &:before, &:after {
-      cursor: pointer;
-      height: 25px;
-      background: rgb(255, 255, 255);
+  &.menubar {
+    right: 6.125%;
+    span {
       position: absolute;
       display: block;
       content: '';
-    }
-    &:before {
-      left: -10px;
-      width: 10px;
-    }
-    &:after {
-      right: -6px;
-      width: 5px;
-    }
-    transition: all 500ms ease-in-out;
-    &:before, &:after {
+      &:before, &:after {
+        cursor: pointer;
+        height: 25px;
+        background: rgb(255, 255, 255);
+        position: absolute;
+        display: block;
+        content: '';
+      }
+      &:before {
+        left: -10px;
+        width: 10px;
+      }
+      &:after {
+        right: -6px;
+        width: 5px;
+      }
       transition: all 500ms ease-in-out;
+      &:before, &:after {
+        transition: all 500ms ease-in-out;
+      }
     }
-  }
-  &.active span {
-    background-color: transparent;
-    &:before, &:after {
-      left: -5px;
-    }
-    &:before {
-      transform: rotate(45deg);
-      width: 5px;
-    }
-    &:after {
-      transform: rotate(-45deg);
+    &.active span {
+      background-color: transparent;
+      &:before, &:after {
+        left: -5px;
+      }
+      &:before {
+        transform: rotate(45deg);
+        width: 5px;
+      }
+      &:after {
+        transform: rotate(-45deg);
+      }
     }
   }
 }
@@ -131,6 +133,7 @@ main {
 }
 
 $flippedSet: -4px;
+$asideOffset: -12.7%;
 
 .flipped b {
   display: inline-block;
@@ -194,7 +197,7 @@ $flippedSet: -4px;
   @include breakpoint($break-fast) {
     position: absolute;
     top: 0;
-    left: 0;
+    left: $asideOffset;
     height: 100%;
     width: 13.125%;
     border-right: 1px solid $white;
@@ -286,7 +289,7 @@ $flippedSet: -4px;
 [role="menubar"] {
   position: absolute;
   top: 0;
-  right: -13.125%;
+  right: $asideOffset;
   height: 100%;
   width: 13.125%;
   border-left: 1px solid rgb(255, 255, 255);
@@ -298,9 +301,10 @@ $flippedSet: -4px;
     padding-left: 0;
     margin: 50px auto 0;
   }
-  &.slideOut {
-    transform: translate(-100%, 0);
-  }
+}
+
+.slideOut {
+  transform: translate(-100%, 0);
 }
 
 [role="listbox"] {
