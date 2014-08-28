@@ -39,12 +39,12 @@ module.exports = function (grunt) {
 					' */\n'
 		},
 
-//		notify_hooks: {
-//			options: {
-//				enabled: true,
-//				max_jshint_notifications: 5, // maximum number of notifications from jshint output
-//			}
-//		},
+		notify_hooks: {
+			options: {
+				enabled: true,
+				max_jshint_notifications: 5, // maximum number of notifications from jshint output
+			}
+		},
 
     	/*** Compass
 			* https://www.npmjs.org/package/grunt-contrib-compass
@@ -133,6 +133,7 @@ module.exports = function (grunt) {
 			'compass',
 			'concat',
 			'uglify',
+			'notify_hooks',
 			'watch'
 		]
 	);
