@@ -89,9 +89,8 @@ var menuBar = document.querySelector('[role="menubar"]');
 var navBarToggler = document.querySelector("#navbar-toggle" );
 var navBar = document.querySelector('[role="navigation"]');
 
-  var ico = document.createElement("span");
-  menuBarToggler.appendChild(ico);
-  navBarToggler.appendChild(ico);
+menuBarToggler.appendChild(document.createElement("span"));
+navBarToggler.appendChild(document.createElement("span"));
 
 addEvent('load', document, function(){
 	console.log("loaded");
