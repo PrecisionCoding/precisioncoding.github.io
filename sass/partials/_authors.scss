@@ -120,6 +120,7 @@ body {
   padding: 0 10px;
 }
 
+/* 
 [role="heading"],
 [role="navigation"] {
   @include breakpoint($break-brunch + 1px, "min-width") {
@@ -129,7 +130,8 @@ body {
       color: $white;
     };
   }
-}
+} 
+*/
 
 main {
   margin: 1.5em auto;
@@ -209,10 +211,8 @@ $asideOffset: -12.7%;
     padding: 0;
   }
 
-  border: 0;
-
   nav { 
-    height: 30px; 
+    height: 50px; 
 
     a {
       display: block;

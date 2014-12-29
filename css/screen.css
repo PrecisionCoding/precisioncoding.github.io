@@ -425,19 +425,23 @@ body {
       width: 1174px;
       margin: 0 auto; } }
 
-@media only screen and (min-width: 481px) {
-  /* line 123, ../sass/partials/_authors.scss */
-  [role="heading"],
-  [role="navigation"] {
-    border-width: 0 1px 1px;
-    border-style: solid;
-    border-color: white; } }
-
-/* line 134, ../sass/partials/_authors.scss */
+/* 
+[role="heading"],
+[role="navigation"] {
+  @include breakpoint($break-brunch + 1px, "min-width") {
+    border: {
+      width: 0 1px 1px;
+      style: solid;
+      color: $white;
+    };
+  }
+} 
+*/
+/* line 136, ../sass/partials/_authors.scss */
 main {
   margin: 1.5em auto; }
 
-/* line 141, ../sass/partials/_authors.scss */
+/* line 143, ../sass/partials/_authors.scss */
 .flipped b {
   display: inline-block;
   font-size: 1.6rem;
@@ -445,7 +449,7 @@ main {
   font-weight: 100;
   color: white;
   text-decoration: none; }
-  /* line 148, ../sass/partials/_authors.scss */
+  /* line 150, ../sass/partials/_authors.scss */
   .flipped b:first-of-type {
     margin-right: -4px;
     -webkit-transition: all 300ms;
@@ -460,11 +464,11 @@ main {
     transform: scaleX(-1);
     filter: FlipH;
     /* IE 6/7/8 */ }
-  /* line 155, ../sass/partials/_authors.scss */
+  /* line 157, ../sass/partials/_authors.scss */
   .flipped b + b {
     margin-left: -4px; }
 
-/* line 160, ../sass/partials/_authors.scss */
+/* line 162, ../sass/partials/_authors.scss */
 [role="heading"] h1 {
   text-align: center;
   line-height: 25px;
@@ -472,97 +476,94 @@ main {
   font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
   text-shadow: black 1px 1px; }
   @media only screen and (max-width: 568px) {
-    /* line 160, ../sass/partials/_authors.scss */
+    /* line 162, ../sass/partials/_authors.scss */
     [role="heading"] h1 {
       font-size: 1.2em; } }
   @media only screen and (min-width: 569px) {
-    /* line 160, ../sass/partials/_authors.scss */
+    /* line 162, ../sass/partials/_authors.scss */
     [role="heading"] h1 {
       font-size: 4.0em; } }
-  /* line 175, ../sass/partials/_authors.scss */
+  /* line 177, ../sass/partials/_authors.scss */
   [role="heading"] h1 a strong, [role="heading"] h1 a b {
     font-weight: inherit; }
-  /* line 178, ../sass/partials/_authors.scss */
+  /* line 180, ../sass/partials/_authors.scss */
   [role="heading"] h1 a:hover b, [role="heading"] h1 a:hover span, [role="heading"] h1 a:focus b, [role="heading"] h1 a:focus span, [role="heading"] h1 a:active b, [role="heading"] h1 a:active span {
     letter-spacing: 0;
     text-decoration: none; }
-  /* line 187, ../sass/partials/_authors.scss */
+  /* line 189, ../sass/partials/_authors.scss */
   [role="heading"] h1 a:hover span, [role="heading"] h1 a:focus span, [role="heading"] h1 a:active span {
     opacity: 1; }
-  /* line 192, ../sass/partials/_authors.scss */
+  /* line 194, ../sass/partials/_authors.scss */
   [role="heading"] h1 a span {
     font-variant: small-caps;
     /*opacity: 0;*/ }
 
-/* line 199, ../sass/partials/_authors.scss */
-[role="navigation"] {
-  border: 0; }
-  @media only screen and (max-width: 320px) {
-    /* line 199, ../sass/partials/_authors.scss */
-    [role="navigation"] {
-      position: absolute;
-      top: 0;
-      left: -12.7%;
-      height: 100%;
-      width: 13.125%;
-      border-right: 1px solid white;
-      background-color: rgba(51, 89, 165, 0.9);
-      z-index: 100;
-      padding: 0; } }
-  /* line 214, ../sass/partials/_authors.scss */
-  [role="navigation"] nav {
-    height: 30px; }
-    /* line 217, ../sass/partials/_authors.scss */
-    [role="navigation"] nav a {
-      display: block;
-      font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
-      background-repeat: no-repeat;
-      background-origin: border-box;
-      background-position: 10px center;
-      background-clip: border-box; }
-      @media only screen and (max-width: 320px) {
-        /* line 217, ../sass/partials/_authors.scss */
-        [role="navigation"] nav a {
-          line-height: 50px;
-          height: 49px;
-          margin-bottom: 1px; }
-          /* line 228, ../sass/partials/_authors.scss */
-          [role="navigation"] nav a .navigation__link--slider {
-            margin-left: 100%;
-            height: 100%;
-            display: none;
-            text-shadow: 1px 1px #000;
-            background-color: rgba(51, 89, 165, 0.9);
-            padding-right: 10px;
-            padding-left: 10px;
-            border-width: 1px 1px 1px 0;
-            border-color: white;
-            border-style: solid; } }
-      @media only screen and (min-width: 569px) {
-        /* line 217, ../sass/partials/_authors.scss */
-        [role="navigation"] nav a {
-          display: inline-block;
-          width: 20%; } }
-      @media only screen and (min-width: 569px) {
-        /* line 249, ../sass/partials/_authors.scss */
-        [role="navigation"] nav a.logo {
-          display: none; } }
-      /* line 253, ../sass/partials/_authors.scss */
-      [role="navigation"] nav a.portfolio {
-        background-image: url(../img/compass-16.svg);
-        background-size: 22px 32px; }
-      /* line 259, ../sass/partials/_authors.scss */
-      [role="navigation"] nav a.chronicles {
-        background-image: url(../img/chronicles-16.svg);
-        background-size: 22px 32px; }
-      /* line 264, ../sass/partials/_authors.scss */
-      [role="navigation"] nav a.experiments {
-        background-image: url(../img/experiments-16.svg);
-        background-size: 22px 21px; }
-      /* line 269, ../sass/partials/_authors.scss */
-      [role="navigation"] nav a.interactions {
-        background-image: url(../img/interaction-16.svg);
-        background-size: 22px 21px; }
+@media only screen and (max-width: 320px) {
+  /* line 201, ../sass/partials/_authors.scss */
+  [role="navigation"] {
+    position: absolute;
+    top: 0;
+    left: -12.7%;
+    height: 100%;
+    width: 13.125%;
+    border-right: 1px solid white;
+    background-color: rgba(51, 89, 165, 0.9);
+    z-index: 100;
+    padding: 0; } }
+/* line 214, ../sass/partials/_authors.scss */
+[role="navigation"] nav {
+  height: 50px; }
+  /* line 217, ../sass/partials/_authors.scss */
+  [role="navigation"] nav a {
+    display: block;
+    font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position: 10px center;
+    background-clip: border-box; }
+    @media only screen and (max-width: 320px) {
+      /* line 217, ../sass/partials/_authors.scss */
+      [role="navigation"] nav a {
+        line-height: 50px;
+        height: 49px;
+        margin-bottom: 1px; }
+        /* line 228, ../sass/partials/_authors.scss */
+        [role="navigation"] nav a .navigation__link--slider {
+          margin-left: 100%;
+          height: 100%;
+          display: none;
+          text-shadow: 1px 1px #000;
+          background-color: rgba(51, 89, 165, 0.9);
+          padding-right: 10px;
+          padding-left: 10px;
+          border-width: 1px 1px 1px 0;
+          border-color: white;
+          border-style: solid; } }
+    @media only screen and (min-width: 569px) {
+      /* line 217, ../sass/partials/_authors.scss */
+      [role="navigation"] nav a {
+        display: inline-block;
+        width: 20%; } }
+    @media only screen and (min-width: 569px) {
+      /* line 249, ../sass/partials/_authors.scss */
+      [role="navigation"] nav a.logo {
+        display: none; } }
+    /* line 253, ../sass/partials/_authors.scss */
+    [role="navigation"] nav a.portfolio {
+      background-image: url(../img/compass-16.svg);
+      background-size: 22px 32px; }
+    /* line 259, ../sass/partials/_authors.scss */
+    [role="navigation"] nav a.chronicles {
+      background-image: url(../img/chronicles-16.svg);
+      background-size: 22px 32px; }
+    /* line 264, ../sass/partials/_authors.scss */
+    [role="navigation"] nav a.experiments {
+      background-image: url(../img/experiments-16.svg);
+      background-size: 22px 21px; }
+    /* line 269, ../sass/partials/_authors.scss */
+    [role="navigation"] nav a.interactions {
+      background-image: url(../img/interaction-16.svg);
+      background-size: 22px 21px; }
 
 /* line 278, ../sass/partials/_authors.scss */
 [role="search"] {
