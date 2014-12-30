@@ -541,7 +541,7 @@ main {
           border-style: solid; } }
     /* line 243, ../sass/partials/_authors.scss */
     [role="navigation"] nav a:hover {
-      background-position: 30% center;
+      background-position: 25% center;
       background-size: 22px 32px; }
       /* line 246, ../sass/partials/_authors.scss */
       [role="navigation"] nav a:hover.smaller {
@@ -684,7 +684,7 @@ time {
     /* line 395, ../sass/partials/_authors.scss */
     [role="marquee"] .slider-nav {
       position: absolute;
-      top: 56px;
+      top: 52px;
       background-color: #3359a5;
       width: 200px;
       line-height: 447px;
