@@ -92,11 +92,13 @@ nav a {
 /*51,102,255*/
 body {
   @extend body;
-  background-color: $blueprint;
-  background-image: url(../img/grid-offset.png);
-  background-repeat: repeat;
-  background-origin: content-box;
-  background-size: auto;
+  background {
+    color: $blueprint;
+    image: url(../img/grid-offset.png);
+    repeat: repeat;
+    origin: content-box;
+    size: auto;
+  }
   color: $white;
   font-family: $avenir;
   -webkit-font-smoothing: antialiased;
@@ -240,6 +242,13 @@ $asideOffset: -12.7%;
           }
         }
       }
+      &:hover {
+        background-position: 30% center;
+        background-size: 22px 32px; 
+        &.smaller {
+          background-size: 22px 21px;
+        }
+      }
 
       @include breakpoint($break-elevenses + 1px, "min-width") {
         display: inline-block;
@@ -252,27 +261,21 @@ $asideOffset: -12.7%;
 
       &.portfolio {
         &:hover {
-          background-position: center center; 
           background-image: url(../img/compass-16.svg);
-          //      background-size: 11px 16px;
-          //      background-size: 16px 25px;
-          background-size: 22px 32px;
         }
       }
       &.chronicles {
-        background-image: url(../img/chronicles-16.svg);
-        //      background-size: 12px 16px;
-        background-size: 22px 32px;
+        &:hover {
+          background-image: url(../img/chronicles-16.svg);
+        }
       }
       &.experiments {
-        background-image: url(../img/experiments-16.svg);
-        //      background-size: 16px 15px;
-        background-size: 22px 21px;
+        &:hover {
+          background-image: url(../img/experiments-16.svg);
+        }
       }
       &.interactions {
         background-image: url(../img/interaction-16.svg);
-        //      background-size: 16px 15px;
-        background-size: 22px 21px;
       }
     }
   }
