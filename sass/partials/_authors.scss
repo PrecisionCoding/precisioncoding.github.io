@@ -273,7 +273,9 @@ $asideOffset: -12.7%;
         }
       }
       &.interactions {
-        background-image: url(../img/interaction-16.svg);
+        &:hover {
+          background-image: url(../img/interaction-16.svg);
+        }
       }
     }
   }
