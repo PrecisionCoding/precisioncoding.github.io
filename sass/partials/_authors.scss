@@ -92,13 +92,11 @@ nav a {
 /*51,102,255*/
 body {
   @extend body;
-  background {
-    color: $blueprint;
-    image: url(../img/grid-offset.png);
-    repeat: repeat;
-    origin: content-box;
-    size: auto;
-  }
+  background-color: $blueprint;
+  background-image: url(../img/grid-offset.png);
+  background-repeat: repeat;
+  background-origin: content-box;
+  background-size: auto;
   color: $white;
   font-family: $avenir;
   -webkit-font-smoothing: antialiased;
