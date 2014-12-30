@@ -444,7 +444,7 @@ main {
 /* line 143, ../sass/partials/_authors.scss */
 .flipped b {
   display: inline-block;
-  font-size: 1.6rem;
+  font-size: inherit;
   font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
   font-weight: 100;
   color: white;
