@@ -232,3 +232,17 @@ pip-log.txt
 *.sublime-project
 *.sublime-workspace
 
+#############
+## Grunt
+#############
+gruntfile.js
+package.json
+
+
+#############
+## Git
+#############
+**/.git/*
+.gitignore
+.gitattributes
+

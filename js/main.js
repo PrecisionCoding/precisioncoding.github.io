@@ -183,7 +183,6 @@ addEvent( "click", navBarToggler, function() {
 	}	
 	
 	if (isMobile) {
-		$('#s-slideshowpro-test .page-wrapper').css({outline: '1px dotted green' });
 		
 		updateOrientation();
 		var supportsOrientation = (typeof window.orientation == 'number' && typeof window.onorientationchange == 'object');
@@ -192,27 +191,34 @@ addEvent( "click", navBarToggler, function() {
 		}
 		// create hook for body
 		$('body').addClass('isMobile');
-		// Clone our navigation
-		mainNavigation = $('nav[role="navigation"]').clone();
-		// remove the superfish menu class
-		$('nav[role="navigation"]').children('ul').removeClass('sf-menu').addClass('mobileMenu');
-		//add it back to the page
-		$('nav[role="navigation"]').prependTo('body').show();
 
-		if ($('aside[role="tabpanel"]').length > 0) {
-			$('#asideMenuIcon').show();
-			// Clone the sidebar
-			mainSidebar = $('aside[role="tabpanel"]').clone();
-			//add the mainsidebar back to the page
-			$('aside[role="tabpanel"]').prependTo('body').show();
-
-			$('aside[role="tabpanel"]').css('left', $(window).width() + 'px');
+		if ($('aside[role="navigation"]').length > 0){
+			//Show navigation toggle button
+			$('#menubar-toggle').show();
+			// Clone our navigation
+			mainNavigation = $('aside[role="navigation"]').clone();
+			// remove the superfish menu class
+			$('aside[role="navigation"]').children('ul').removeClass('sf-menu').addClass('mobileMenu');
+			//add it back to the page
+			$('aside[role="navigation"]').prependTo('body').show();
 		}
 
+		if ($('aside[role="menubar"]').length > 0) {
+			//Show menubar navigation button
+			$('#menubar-toggle').show();
+			// Clone the sidebar
+			mainSidebar = $('aside[role="menubar"]').clone();
+			//add the mainsidebar back to the page
+			$('aside[role="menubar"]').prependTo('body').show();
+
+			$('aside[role="menubar"]').css('left', $(window).width() + 'px');
+		}
+
+		var menuWidth = 280;
 		var menuStatus = false;
 		var asideStatus = false;
-		var navMargin = "280px";
-		var sideMargin = -Math.abs(280) + "px";
+		var navMargin = Math.abs(menuWidth) + "px";
+		var sideMargin = -Math.abs(menuWidth) + "px";
 
 		var clonedSides = function (trigger, sidebar, movement, flag) {
 			$('[role="banner"]').children('figure').on('click', trigger, function (n) {
@@ -234,8 +240,8 @@ addEvent( "click", navBarToggler, function() {
 			});
 		}
 
-		clonedSides('#navMenuIcon', 'nav[role="navigation"]', navMargin, menuStatus);
-		clonedSides('#asideMenuIcon', 'aside[role="tabpanel"]', sideMargin, asideStatus);
+		clonedSides('#navbar-toggle', 'aside[role="navigation"]', navMargin, menuStatus);
+		clonedSides('#menubar-toggle', 'aside[role="menubar"]', sideMargin, asideStatus);
 		
 		//scrollFixedMenu('nav[role="navigation"]');
 
