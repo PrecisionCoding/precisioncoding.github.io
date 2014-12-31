@@ -19,58 +19,86 @@
 }
 
 .toggler {
-  position: absolute;
-  top: 1%;
-  width: 0;
-  height: 0;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  z-index: 110;
-  &.navbar {
-    left: 6.125%;
-  }
-  &.menubar {
-    right: 6.125%;
-    span {
-      position: absolute;
-      display: block;
-      content: '';
-      &:before, &:after {
-        cursor: pointer;
-        height: 25px;
+  @include breakpoint($break-fast) {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    z-index: 110;
+    &.navbar {
+      left: 6.125%;
+      top: 50%;
+      span {
+        position: absolute;
+        display: inline-block;
+        content: '';
+        width: 1.2rem;
+        height: 3px;
         background: rgb(255, 255, 255);
+        transition: 0.3s;
+
+        &:before, &:after {
+          cursor: pointer;
+          width: 1.2rem;
+          height: 3px;
+          background: rgb(255, 255, 255);
+          position: absolute;
+          left: 0;
+          display: inline-block;
+          content: '';
+          transition: 0.3s;
+          transform-origin: 0.05rem center;
+        }
+
+        &:before { top: 0.5rem; }
+        &:after { top: -0.5rem; }
+      }
+
+      &.active {
+        left: 4%;
+        span {
+          &:before, &:after { top:0; width: 0.6rem; }
+          &:before { transform: rotate3d(0, 0, 1, 40deg); }
+          &:after { transform: rotate3d(0, 0, 1, -40deg); }
+        }
+      }
+    }
+
+    &.menubar {
+      right: 6.125%;
+      span {
         position: absolute;
         display: block;
         content: '';
-      }
-      &:before {
-        left: -10px;
-        width: 10px;
-      }
-      &:after {
-        right: -6px;
-        width: 5px;
-      }
-      transition: all 500ms ease-in-out;
-      &:before, &:after {
         transition: all 500ms ease-in-out;
+
+        &:before, &:after {
+          cursor: pointer;
+          height: 20px;
+          background: rgb(255, 255, 255);
+          position: absolute;
+          display: block;
+          content: '';
+          transition: all 500ms ease-in-out;
+        }
+
+        &:before { left: -10px; width: 10px; }
+        &:after { right: -6px; width: 5px; }
+
       }
-    }
-    &.active span {
-      background-color: transparent;
-      &:before, &:after {
-        left: -5px;
-      }
-      &:before {
-        transform: rotate(45deg);
-        width: 5px;
-      }
-      &:after {
-        transform: rotate(-45deg);
+
+      &.active span {
+        background-color: transparent;
+
+        &:before, &:after { left: -5px; width: 3px; }
+        &:before { transform: rotate(45deg); }
+        &:after { transform: rotate(-45deg); }
       }
     }
   }
+  @include breakpoint($break-elevenses + 1px, "min-width") { display: none; }
 }
 
 a {
@@ -111,7 +139,7 @@ body {
   text-align: center;
 }
 
-[role="heading"], [role="marquee"] [role="columnheader"], [role="navigation"], main {
+[role="banner"], [role="heading"], [role="marquee"] [role="columnheader"], [role="navigation"], main {
   @include breakpoint($break-brunch + 1px, "min-width") {
     width: $break-dinner;
     margin: 0 auto;
@@ -149,8 +177,8 @@ $asideOffset: -12.7%;
   text-decoration: none;
   &:first-of-type {
     margin-right: $flippedSet;
-    @include vendor-prefix(transition, all 300ms);
-    @include vendor-prefix(transform, scaleX(-1));
+    @include transition( all 300ms );
+    @include transform( scaleX(-1) );
     filter: FlipH;
     /* IE 6/7/8 */
   }
@@ -160,37 +188,34 @@ $asideOffset: -12.7%;
 }
 
 [role="heading"] h1 {
+  margin: .57em 0;
   text-align: center;
   line-height: 25px;
   font-weight: 100;
   font-family: $book_antiqua;
   text-shadow: rgb(0, 0, 0) 1px 1px;
-  @include breakpoint($break-elevenses) {
-    font-size: 1.2em;
-  }
-
-  @include breakpoint($break-elevenses + 1px, "min-width") {
-    font-size: 4.0em;
-  }
+  @include breakpoint($break-elevenses) { font-size: 1.2em; }
+  @include breakpoint($break-elevenses + 1px, "min-width") { font-size: 4.0em; }
 
   a {
     strong, b {
       font-weight: inherit;
     }
-    &:hover b,
-    &:hover span,
-    &:focus b,
-    &:focus span,
-    &:active b,
-    &:active span {
-      letter-spacing: 0;
+
+    &:hover,
+    &:focus,
+    &:active {
       text-decoration: none;
+      b, span {
+        letter-spacing: 0;
+        text-decoration: none;
+      }
+      span {
+        opacity: 1;
+        text-decoration: none;
+      }
     }
-    &:hover span,
-    &:focus span,
-    &:active span {
-      opacity: 1;
-    }
+
     span {
       font-variant: small-caps;
       /*opacity: 0;*/
@@ -209,10 +234,15 @@ $asideOffset: -12.7%;
     background-color: $blueprintAlpha9;
     z-index: 100;
     padding: 0;
+    @include transition( 1s ease-in-out );
+    &.slideOut {
+      @include transform( translate(100%, 0) );
+    }
   }
 
-  nav { 
-    height: 50px; 
+  nav {
+    @include breakpoint($break-fast) { margin-top: 2.2em; }
+    @include breakpoint($break-elevenses + 1px, "min-width") { height: 50px; }
 
     a {
       display: block;
@@ -221,14 +251,17 @@ $asideOffset: -12.7%;
       background-origin: border-box;
       background-position: 10px center;
       background-clip: border-box;
+      background-size: 22px 32px; 
+      &.smaller {
+        background-size: 22px 21px;
+      }      
       @include breakpoint($break-fast) {
         line-height: 50px;
         height: 49px;
         margin-bottom: 1px;
         .navigation__link--slider {
           margin-left: 100%;
-          height: 100%;
-          display: none;
+          height: 100%;          
           text-shadow: 1px 1px #000;
           background-color: $blueprintAlpha9;
           padding-right: 10px;
@@ -238,19 +271,19 @@ $asideOffset: -12.7%;
             color: $white;
             style: solid;
           }
-        }
-      }
-      &:hover {
-        background-position: 25% center;
-        background-size: 22px 32px; 
-        &.smaller {
-          background-size: 22px 21px;
+          @include breakpoint($break-fast) { display: none; }
         }
       }
 
       @include breakpoint($break-elevenses + 1px, "min-width") {
         display: inline-block;
         width: 25%;
+        &:hover {
+          background-position: 30% center;
+          &.wider {
+            background-position: 25% center;
+          }
+        }
       }
 
       &.logo {
@@ -259,22 +292,22 @@ $asideOffset: -12.7%;
 
       &.portfolio {
         &:hover {
-          background-image: url(../img/compass-16.svg);
+          @include show-bg-img('../img/compass-16.svg');
         }
       }
       &.chronicles {
         &:hover {
-          background-image: url(../img/chronicles-16.svg);
+          @include show-bg-img('../img/chronicles-16.svg');
         }
       }
       &.experiments {
         &:hover {
-          background-image: url(../img/experiments-16.svg);
+          @include show-bg-img('../img/experiments-16.svg');
         }
       }
       &.interactions {
         &:hover {
-          background-image: url(../img/interaction-16.svg);
+          @include show-bg-img('../img/interaction-16.svg');
         }
       }
     }
@@ -283,15 +316,21 @@ $asideOffset: -12.7%;
 
 [role="search"] {
   border: {
-    width: 0 0 0 1px;
+    width: 1px;
     style: solid;
     color: $white;
   };
+  max-width: 300px;
   padding: 0 0.5%;
-  width: 19%;
-  display: inline-block;
   form {
-    display: inline;
+    button {
+      background: none;
+      border: none;
+      float: right;
+      color: white;
+      line-height: 1.6em;
+      font-weight: 400;
+    }
     input {
       margin: 0 2px;
       padding: 0 3px;
@@ -306,25 +345,40 @@ $asideOffset: -12.7%;
 }
 
 [role="menubar"] {
-  position: absolute;
-  top: 0;
-  right: $asideOffset;
-  height: 100%;
-  width: 13.125%;
-  border-left: 1px solid rgb(255, 255, 255);
-  background-color: rgba(51, 89, 165, 0.9);
-  z-index: 100;
-  padding: 0;
-  transition: 1s ease-in-out;
+  @include breakpoint($break-fast) {
+    position: absolute;
+    top: 0;
+    right: $asideOffset;
+    height: 100%;
+    width: 13.125%;
+    border-left: 1px solid rgb(255, 255, 255);
+    background-color: rgba(51, 89, 165, 0.9);
+    z-index: 100;
+    padding: 0;
+    @include transition( 1s ease-in-out );
+    &.slideOut {
+      @include transform( translate(-100%, 0) );
+    }
+  }
+  @include breakpoint($break-elevenses + 1px, "min-width") { 
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
   ol {
-    padding-left: 0;
-    margin: 50px auto 0;
+    padding: 0;
+    margin: 0;
+    @include breakpoint($break-fast) { margin: 50px auto 0; }
+
+    @include breakpoint($break-elevenses + 1px, "min-width") { 
+      li {
+        display: inline-block;
+      }
+    }
   }
 }
 
-.slideOut {
-  transform: translate(-100%, 0);
-}
+
 
 [role="listbox"] {
   width: 1174px;
@@ -401,6 +455,7 @@ $slider-nav-hard: rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0,
       text-align: center;
       font-size: 11.5em;
       //border-top: 1px solid $white;
+      &:hover { text-decoration:none; outline: none; }
       @include vendor-prefix(background-size, 8px 8px);
     }
     #left {

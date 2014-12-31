@@ -13,32 +13,38 @@
   </head>
   <body class="grid">
     <header role="banner" class="clearfix">
-      <button id="navbar-toggle" class="navbar toggler" title="View Site Navigation"/>
-      <div role="heading">
-        <h1 class="flipped"><b>R</b>andom Precision Ltd.</h1>
+      <button id="navbar-toggle" class="navbar toggler" title="View Site Navigation" role="button" aria-label="Toggle Navigation Menu"></button>
+      <button id="menubar-toggle" class="menubar toggler" title="Browse Connectivity" role="button" aria-label="Toggle Connectivity Menu"></button>
+      <div role="search">
+        <form method="post">
+          <label class="widget__form--search-label visuallyhidden" for="s">Search</label>
+          <input name="s" id="s" type="search" placeholder="Search anything &#8230;" />
+          <button class="search" title="Search site"><i class="fa fa-search fa-large"></i></button>
+        </form>
       </div>
-      <button id="menubar-toggle" class="menubar toggler" title="Browse Social Connectivity"/>
-    </header>
-    <aside role="navigation" class="clearfix">
-      <nav>
-        <a class="navigation__link logo flipped" href="#" title="Random Precision Ltd"><b>R</b><b>P</b></a>
-        <a class="navigation__link portfolio" href="#" title="Portfolio"><span class="navigation__link--slider">Portfolio</span></a>
-        <a class="navigation__link chronicles" href="#" title="Chronicles"><span class="navigation__link--slider">Chronicles</span></a>
-        <a class="navigation__link experiments smaller" href="#" title="Experiments"><span class="navigation__link--slider">Experiments</span></a>
-        <a class="navigation__link interactions smaller" href="#" title="Interactions"><span class="navigation__link--slider">Interactions</span></a>
-      </nav>
-    </aside>
-    <aside role="menubar" class="clearfix">
-      <ol role="menu" class="list-style-none">
-        <li role="menuitem"><a href="#" title="Subscribe"><i class="fa fa-rss-square fa-large"></i></a></li>
-        <li role="menuitem"><a href="#" title="Register"><i class="fa fa-pencil-square-o fa-large"></i></a></li>
-        <li role="menuitem"><a href="#" title="Login"><i class="fa fa-sign-in fa-large"></i></a></li>
-        <li role="menuitem"><a id="followers" title="Currently hiding offline from the twits; Visit Twitter to follow as well if you like!" class="tipped" href="http://twitter.com/precisioncoding"><i class="fa fa-twitter-square fa-large"></i></a></li>
-        <li role="menuitem"><a id="facebooked" title="Like on Facebook, the social place" class="tipped" href="https://www.facebook.com/pages/Random-Precision-Ltd/186625484704038"><i class="fa fa-facebook-square fa-large"></i></a></li>
-        <li role="menuitem"><a id="linked" title="Visit on LinkedIn - The Professional Network, let's link up!" class="tipped" href="http://uk.linkedin.com/in/randomprecisionltd"><i class="fa fa-linkedin-square fa-large"></i></a></li>
-        <li role="menuitem"><a id="googleplus" title="Check out on Google+" class="tipped" rel="publisher" href="https://plus.google.com/117061364311134950845"><i class="fa fa-google-plus-square fa-large"></i></a></li>
-      </ol>
-    </aside>
+      <div role="heading">
+        <h1><a href="/" class="flipped"><b>Random</b> Precision Ltd.</a></h1>
+      </div>
+      <aside role="navigation" class="clearfix">
+        <nav>
+          <a class="navigation__link portfolio" href="#" title="Portfolio"><span class="navigation__link--slider">Portfolio</span></a>
+          <a class="navigation__link chronicles wider" href="#" title="Chronicles"><span class="navigation__link--slider">Chronicles</span></a>
+          <a class="navigation__link experiments smaller wider" href="#" title="Experiments"><span class="navigation__link--slider">Experiments</span></a>
+          <a class="navigation__link interactions smaller wider" href="#" title="Interactions"><span class="navigation__link--slider">Interactions</span></a>
+        </nav>
+      </aside>
+      <aside role="menubar" class="clearfix">
+        <ol role="menu" class="list-style-none">
+          <li role="menuitem"><a href="#" title="Subscribe"><i class="fa fa-rss-square fa-large"></i></a></li>
+          <li role="menuitem"><a href="#" title="Register"><i class="fa fa-pencil-square-o fa-large"></i></a></li>
+          <li role="menuitem"><a href="#" title="Login"><i class="fa fa-sign-in fa-large"></i></a></li>
+          <li role="menuitem"><a id="followers" title="Currently hiding offline from the twits; Visit Twitter to follow as well if you like!" class="tipped" href="http://twitter.com/precisioncoding"><i class="fa fa-twitter-square fa-large"></i></a></li>
+          <li role="menuitem"><a id="facebooked" title="Like on Facebook, the social place" class="tipped" href="https://www.facebook.com/pages/Random-Precision-Ltd/186625484704038"><i class="fa fa-facebook-square fa-large"></i></a></li>
+          <li role="menuitem"><a id="linked" title="Visit on LinkedIn - The Professional Network, let's link up!" class="tipped" href="http://uk.linkedin.com/in/randomprecisionltd"><i class="fa fa-linkedin-square fa-large"></i></a></li>
+          <li role="menuitem"><a id="googleplus" title="Check out on Google+" class="tipped" rel="publisher" href="https://plus.google.com/117061364311134950845"><i class="fa fa-google-plus-square fa-large"></i></a></li>
+        </ol>
+      </aside>
+      </header>
     <section role="marquee" class="clearfix">
       <header role="columnheader" class="clearfix">
         <h2>Highlights</h2>
@@ -103,8 +109,8 @@
         <div role="alert" class="exclusive clearfix">
           <figure class="angular-tabbed">
             <picture>
-              <source media="(min-width: 45em)" srcset="img/large-1.jpg, img/large-2.jpg 2x">
-              <source media="(min-width: 18em)" srcset="img/med-1.jpg, img/med-2.jpg 2x">
+              <source media="(min-width: 45em)" srcset="http://lorempixel.com/1174/450/abstract, http://lorempixel.com/1174/450/abstract 2x">
+              <source media="(min-width: 18em)" srcset="http://lorempixel.com/300/200/abstract, http://lorempixel.com/300/200/abstract 2x">
               <img src="http://lorempixel.com/300/200/abstract" srcset="http://lorempixel.com/400/300/abstract 2x" alt="" />
             </picture>
             <figcaption class="tabbed">
@@ -161,13 +167,6 @@
       <article role="contentinfo">
           <section>
             <h4 class="footer__headline--title">Footer Section 1</h4>
-            <ul>
-              <li role="search"> <i class="fa fa-search fa-large"></i>
-                <form method="post">
-                  <input type="search" placeholder="Search anything &#8230;" />
-                </form>
-              </li>
-            </ul>
           </section>
           <section>
             <h4 class="footer__headline--title">Footer Section 2</h4>
@@ -179,8 +178,8 @@
       </footer>
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
       <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-      <script src="js/plugins.js"></script>
-      <script src="js/main.js"></script>
+      <script src="/js/plugins.js"></script>
+      <script src="/js/main.js"></script>
       <script>
       var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
       (function (d, t) {

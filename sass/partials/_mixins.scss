@@ -62,3 +62,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+@mixin show-bg-img($img){
+	background-image: url($img);
+}

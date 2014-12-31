@@ -192,6 +192,13 @@ addEvent( "click", navBarToggler, function() {
 		// create hook for body
 		$('body').addClass('isMobile');
 
+		if ($('[role="search"]').length > 0 ){
+			var searchbar = $('[role="search"]').clone();
+
+			$('[role="search"]').appendTo('main');
+
+		}
+
 		if ($('aside[role="navigation"]').length > 0){
 			//Show navigation toggle button
 			$('#menubar-toggle').show();
@@ -210,7 +217,7 @@ addEvent( "click", navBarToggler, function() {
 			mainSidebar = $('aside[role="menubar"]').clone();
 			//add the mainsidebar back to the page
 			$('aside[role="menubar"]').prependTo('body').show();
-
+			//position on the left edge of the screen
 			$('aside[role="menubar"]').css('left', $(window).width() + 'px');
 		}
 
