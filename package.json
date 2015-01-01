@@ -13,7 +13,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "public_html"
+    "url": "gh-pages"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

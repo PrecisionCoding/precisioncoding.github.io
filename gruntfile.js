@@ -42,6 +42,7 @@ module.exports = function (grunt) {
     notify_hooks: {
       options: {
         enabled: true,
+        success: true,
         max_jshint_notifications: 5, // maximum number of notifications from jshint output
       }
     },
@@ -110,7 +111,6 @@ module.exports = function (grunt) {
         dest: '<%= project.app %>/js/min/production.min.js'
       }
     },
-
 
     /*** Runs tasks against changed watched files
        * https://github.com/gruntjs/grunt-contrib-watch
