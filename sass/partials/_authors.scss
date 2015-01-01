@@ -242,7 +242,7 @@ $asideOffset: -12.7%;
 
   nav {
     @include breakpoint($break-fast) { margin-top: 2.2em; }
-    @include breakpoint($break-elevenses + 1px, "min-width") { height: 50px; }
+    @include breakpoint($break-elevenses + 1px, "min-width") { height: 50px; padding-top: 4px; }
 
     a {
       display: block;

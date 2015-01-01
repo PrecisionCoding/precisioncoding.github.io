@@ -573,7 +573,8 @@ main {
 @media only screen and (min-width: 569px) {
   /* line 243, ../sass/partials/_authors.scss */
   [role="navigation"] nav {
-    height: 50px; } }
+    height: 50px;
+    padding-top: 4px; } }
 /* line 247, ../sass/partials/_authors.scss */
 [role="navigation"] nav a {
   display: block;
