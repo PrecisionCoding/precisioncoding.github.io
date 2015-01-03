@@ -168,22 +168,31 @@ main {
 $flippedSet: -4px;
 $asideOffset: -12.7%;
 
-.flipped b {
-  display: inline-block;
-  font-size: inherit;
-  font-family: $book-antiqua;
-  font-weight: 100;
-  color: $white;
-  text-decoration: none;
-  &:first-of-type {
-    margin-right: $flippedSet;
-    @include transition( all 300ms );
-    @include transform( scaleX(-1) );
-    filter: FlipH;
-    /* IE 6/7/8 */
+.flipped {
+  @include perspective( 1000 );
+  b {
+    display: inline-block;
+    font-size: inherit;
+    font-family: $book-antiqua;
+    font-weight: 100;
+    color: $white;
+    text-decoration: none;
+    &:first-of-type {
+      margin-right: $flippedSet;
+      @include transition( all 300ms );
+      @include transform( rotateY(180deg) );
+      //@include transform( scaleX(-1) );
+      //filter: FlipH;
+      /* IE 6/7/8 */
+    }
+    & + b {
+      margin-left: $flippedSet;
+    }
   }
-  & + b {
-    margin-left: $flippedSet;
+  &:hover b:first-of-type {
+//      @include transform( scaleX (-1) );
+    @include transform( rotateY(0deg) );
+    @include transform-style( preserve-3d );
   }
 }
 
