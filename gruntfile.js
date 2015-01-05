@@ -39,11 +39,24 @@ module.exports = function (grunt) {
           ' */\n'
     },
 
+    /*** Notify
+       * https://github.com/dylang/grunt-notify
+       * Automatic Notifications for Grunt tasks
+       */
     notify_hooks: {
       options: {
         enabled: true,
         success: true,
         max_jshint_notifications: 5, // maximum number of notifications from jshint output
+      }
+    },
+
+    notify: {
+      compass: { 
+        options: { 
+          title: "CSS COMPILED", 
+          message: "Compass Task Completed",
+        } 
       }
     },
 
@@ -137,7 +150,7 @@ module.exports = function (grunt) {
       },
       css: {
         files: 'sass/**/*.scss',
-        tasks: ['compass'],
+        tasks: ['compass', 'notify:compass'],
         options: {
           spawn: false,
           livereload: true

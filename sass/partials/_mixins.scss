@@ -63,6 +63,6 @@
   white-space: nowrap;
 }
 
-@mixin show-bg-img($img){
+@mixin show-bg-img($img){	
 	background-image: url($img);
 }
