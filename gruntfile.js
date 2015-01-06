@@ -57,6 +57,12 @@ module.exports = function (grunt) {
           title: "CSS COMPILED", 
           message: "Compass Task Completed",
         } 
+      },
+      uglify: {
+        options: { 
+          title: "JS UGLIED", 
+          message: "Uglify Task Completed",
+        }
       }
     },
 
@@ -142,7 +148,7 @@ module.exports = function (grunt) {
       },
       scripts: {
         files: ['**/*.js'],
-        tasks: ['concat', 'uglify'],
+        tasks: ['concat', 'uglify', 'notify:uglify'],
         options: {
           spawn: false,
           livereload: true

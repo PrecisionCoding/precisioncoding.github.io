@@ -13,8 +13,6 @@
   </head>
   <body class="grid">
     <header role="banner" class="clearfix">
-      <button id="navbar-toggle" class="navbar toggler" title="View Site Navigation" role="button" aria-label="Toggle Navigation Menu"></button>
-      <button id="menubar-toggle" class="menubar toggler" title="Browse Connectivity" role="button" aria-label="Toggle Connectivity Menu"></button>
       <div role="search">
         <form method="post">
           <label class="widget__form--search-label visuallyhidden" for="s">Search</label>
@@ -23,14 +21,14 @@
         </form>
       </div>
       <div role="heading">
-        <h1><a href="/" class="flipped"><b>Random</b> Precision Ltd.</a></h1>
+        <h1><a href="/" class="flipped"><b>Random</b> Precision</a></h1>
       </div>
       <aside role="navigation" class="clearfix">
         <nav>
-          <a class="navigation__link portfolio" href="#" title="Portfolio"><span class="navigation__link--slider">Portfolio</span></a>
-          <a class="navigation__link chronicles wider" href="#" title="Chronicles"><span class="navigation__link--slider">Chronicles</span></a>
-          <a class="navigation__link experiments smaller wider" href="#" title="Experiments"><span class="navigation__link--slider">Experiments</span></a>
-          <a class="navigation__link interactions smaller wider" href="#" title="Interactions"><span class="navigation__link--slider">Interactions</span></a>
+          <a class="navigation__link portfolio" href="#portfolio" title="Portfolio"><span class="navigation__link--slider">Portfolio</span></a>
+          <a class="navigation__link chronicles wider" href="#chronicles" title="Chronicles"><span class="navigation__link--slider">Chronicles</span></a>
+          <a class="navigation__link experiments smaller wider" href="#experiments" title="Experiments"><span class="navigation__link--slider">Experiments</span></a>
+          <a class="navigation__link interactions smaller wider" href="#interactions" title="Interactions"><span class="navigation__link--slider">Interactions</span></a>
         </nav>
       </aside>
       <aside role="menubar" class="clearfix">
@@ -102,16 +100,17 @@
             </figcaption>
           </figure>
         </div>
-        <a href="#left" id="left" class="slider-nav">&lsaquo;</a> <a href="#right" id="right" class="slider-nav">&rsaquo;</a> </div>
-      </section>
-      <main class="clearfix">
+        <a href="#left" id="left" class="slider-nav">&lsaquo;</a> <a href="#right" id="right" class="slider-nav">&rsaquo;</a>
+      </div>
+    </section>
+    <main role="main" class="clearfix">
       <section role="document">
         <div role="alert" class="exclusive clearfix">
           <figure class="angular-tabbed">
             <picture>
-            <source media="(min-width: 45em)" srcset="http://lorempixel.com/1174/450/abstract, http://lorempixel.com/1174/450/abstract 2x">
-            <source media="(min-width: 18em)" srcset="http://lorempixel.com/300/200/abstract, http://lorempixel.com/300/200/abstract 2x">
-            <img src="http://lorempixel.com/300/200/abstract" srcset="http://lorempixel.com/400/300/abstract 2x" alt="" />
+              <source media="(min-width: 45em)" srcset="http://lorempixel.com/1174/450/abstract, http://lorempixel.com/1174/450/abstract 2x">
+              <source media="(min-width: 18em)" srcset="http://lorempixel.com/300/200/abstract, http://lorempixel.com/300/200/abstract 2x">
+              <img src="http://lorempixel.com/300/200/abstract" srcset="http://lorempixel.com/400/300/abstract 2x" alt="" />
             </picture>
             <figcaption class="tabbed">
             <aside>
@@ -135,11 +134,11 @@
               <menu>
               <ul class="unbulleted">
                 <li>
-                  <input type="radio" name="newsView" id="newsView-grid" value="grid" class="" />
+                  <input type="radio" name="newsView" id="newsView-grid" value="grid" class="visuallyhidden" />
                   <label for="newsView-grid" class="pointer"><i class="fa fa-table"></i> Grid</label>
                 </li>
                 <li>
-                  <input type="radio" name="newsView" id="newsView-list" value="list" class="" />
+                  <input type="radio" name="newsView" id="newsView-list" value="list" class="visuallyhidden" />
                   <label for="newsView-list" class="pointer"><i class="fa fa-list"></i> List</label>
                 </li>
               </ul>
@@ -162,31 +161,31 @@
           </header>
         </div>
       </aside>
-      </main>
-      <footer>
-        <article role="contentinfo">
-          <section>
-            <h4 class="footer__headline--title">Footer Section 1</h4>
-          </section>
-          <section>
-            <h4 class="footer__headline--title">Footer Section 2</h4>
-          </section>
-          <section>
-            <h4 class="footer__headline--title">Footer Section 3</h4>
-          </section>
-        </article>
-      </footer>
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-      <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-      <script src="/js/plugins.js"></script>
-      <script src="/js/main.js"></script>
-      <script>
-      var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
-      (function (d, t) {
-      var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      g.src = '//www.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g, s)
-      }(document, 'script'));
-      </script>
-    </body>
-  </html>
+    </main>
+    <footer role="contentinfo">
+      <article>
+        <section>
+          <h4 class="footer__headline--title">Footer Section 1</h4>
+        </section>
+        <section>
+          <h4 class="footer__headline--title">Footer Section 2</h4>
+        </section>
+        <section>
+          <h4 class="footer__headline--title">Footer Section 3</h4>
+        </section>
+      </article>
+    </footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+    var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+    (function (d, t) {
+    var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+    g.src = '//www.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s)
+    }(document, 'script'));
+    </script>
+  </body>
+</html>

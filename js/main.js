@@ -83,7 +83,13 @@ if (storedClassName) {
 
 addEvent(styleSwitcher, 'click', switchStyles);
 
-var menuBarToggler = document.querySelector("#menubar-toggle" );
+/*var menuBarToggler = document.createElement("button");
+menuBarToggler.setAttribute('id', 'navbar-toggle');
+menuBarToggler.setAttribute('class', 'navbar toggler');
+menuBarToggler.setAttribute('title', 'View Site Navigation');
+menuBarToggler.setAttribute('role', 'button');
+menuBarToggler.setAttribute('aria-label', 'Toggle Navigation Menu');
+
 var menuBar = document.querySelector('[role="menubar"]');
 
 var navBarToggler = document.querySelector("#navbar-toggle" );
@@ -104,7 +110,7 @@ addEvent( "click", menuBarToggler, function() {
 addEvent( "click", navBarToggler, function() {
   this.classList.toggle( "active" );
   navBar.classList.toggle('slideOut');
-});
+});*/
 
 (function ($) {
 	$(window).resize(function() {
@@ -192,11 +198,47 @@ addEvent( "click", navBarToggler, function() {
 		// create hook for body
 		$('body').addClass('isMobile');
 
+		//<button id="navbar-toggle" class="navbar toggler" title="View Site Navigation" role="button" aria-label="Toggle Navigation Menu"></button>
+      	//<button id="menubar-toggle" class="menubar toggler" title="Browse Connectivity" role="button" aria-label="Toggle Connectivity Menu"></button>
+
+		var $menuBarToggler = $('<button>', {
+			'id': 'menubar-toggle',
+			'class': 'menubar toggler',
+			'title': 'Browse Connectivity',
+			'role': 'button',
+			'aria-label': 'Toggle Connectivity Menu',
+			click: function() {
+				$( this ).toggleClass( "active" );
+				$('[role="menubar"]').toggleClass("slideOut");
+			}
+		}).prepend('<span></span>').prependTo('[role="banner"]');
+
+		var $navBarToggler = $('<button>', {
+			'id': 'navbar-toggle',
+			'class': 'navbar toggler',
+			'title': 'View Site Navigation',
+			'role': 'button',
+			'aria-label': 'Toggle Navigation Menu',
+			click: function() {
+				$( this ).toggleClass( "active" );
+				$('[role="navigation"]').toggleClass("slideOut");
+			}
+		}).prepend('<span></span>').prependTo('[role="banner"]');
+
 		if ($('[role="search"]').length > 0 ){
 			var searchbar = $('[role="search"]').clone();
-
 			$('[role="search"]').appendTo('main');
+		}
 
+		if ($('aside[role="menubar"]').length > 0) {
+			//Show menubar navigation button
+			$('#menubar-toggle').show();
+			// Clone the sidebar
+			mainSidebar = $('aside[role="menubar"]').clone();
+			//add the mainsidebar back to the page
+			$('aside[role="menubar"]').prependTo('body').show();
+			//position on the right edge of the screen
+			$('aside[role="menubar"]').css({'left': ($(window).width() - 1) + 'px', 'height': $(document).height() + 'px'});
 		}
 
 		if ($('aside[role="navigation"]').length > 0){
@@ -208,17 +250,9 @@ addEvent( "click", navBarToggler, function() {
 			$('aside[role="navigation"]').children('ul').removeClass('sf-menu').addClass('mobileMenu');
 			//add it back to the page
 			$('aside[role="navigation"]').prependTo('body').show();
-		}
+			//set the height to the document
+			$('aside[role="navigation"]').css('height', $(document).height() + 'px');
 
-		if ($('aside[role="menubar"]').length > 0) {
-			//Show menubar navigation button
-			$('#menubar-toggle').show();
-			// Clone the sidebar
-			mainSidebar = $('aside[role="menubar"]').clone();
-			//add the mainsidebar back to the page
-			$('aside[role="menubar"]').prependTo('body').show();
-			//position on the left edge of the screen
-			$('aside[role="menubar"]').css('left', $(window).width() + 'px');
 		}
 
 		var menuWidth = 280;
