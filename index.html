@@ -63,7 +63,7 @@
             <!-- 1174/450 - 960/368 - 748/284 - 548/208 - 460/175  300/114 -->
             <img src="http://lorempixel.com/1174/450/abstract" alt="" />
             <figcaption class="tabbed">
-            <aside>
+            <aside class="angled">
               <h3>Image Headline</h3>
               <p>Image Caption</p>
             </aside>
@@ -73,7 +73,7 @@
             <!-- 1174/450 - 960/368 - 748/284 - 548/208 - 460/175  300/114 -->
             <img src="http://lorempixel.com/1174/450/abstract" alt="" />
             <figcaption class="tabbed">
-            <aside>
+            <aside class="angled">
               <h3>Image Headline</h3>
               <p>Image Caption</p>
             </aside>
@@ -83,7 +83,7 @@
             <!-- 1174/450 - 960/368 - 748/284 - 548/208 - 460/175  300/114 -->
             <img src="http://lorempixel.com/1174/450/abstract" alt="" />
             <figcaption class="tabbed">
-            <aside>
+            <aside class="angled">
               <h3>Image Headline</h3>
               <p>Image Caption</p>
             </aside>
@@ -93,7 +93,7 @@
             <!-- 1174/450 - 960/368 - 748/284 - 548/208 - 460/175  300/114 -->
             <img src="http://lorempixel.com/1174/450/abstract" alt="" />
             <figcaption class="tabbed">
-            <aside>
+            <aside class="angled">
               <h3>Image Headline</h3>
               <p>Image Caption</p>
             </aside>
@@ -162,18 +162,24 @@
         </div>
       </aside>
     </main>
-    <footer role="contentinfo">
-      <article>
-        <section>
-          <h4 class="footer__headline--title">Footer Section 1</h4>
-        </section>
-        <section>
-          <h4 class="footer__headline--title">Footer Section 2</h4>
-        </section>
-        <section>
-          <h4 class="footer__headline--title">Footer Section 3</h4>
-        </section>
-      </article>
+    <footer role="contentinfo" class="clearfix">
+      <ol role="listbox" class="footer__content">    
+        <li role="listitem" class="footer__content--tab">
+          <input type="radio" id="tab-1" name="tab-group-1" checked>
+          <label class="footer__content--tab-label" for="tab-1">Footer Section 1</label>       
+          <div class="footer__content--section">stuff</div> 
+        </li>
+        <li role="listitem" class="footer__content--tab">
+          <input type="radio" id="tab-2" name="tab-group-1">
+          <label class="footer__content--tab-label" for="tab-2">Footer Section 2</label>       
+          <div class="footer__content--section">more stuff</div> 
+        </li>
+        <li role="listitem" class="footer__content--tab">
+          <input type="radio" id="tab-3" name="tab-group-1">
+          <label class="footer__content--tab-label" for="tab-3">Footer Section 3</label>     
+          <div class="footer__content--section">even more stuff</div> 
+        </li>        
+      </ol>
     </footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
