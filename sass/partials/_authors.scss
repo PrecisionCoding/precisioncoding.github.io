@@ -159,7 +159,6 @@ body {
 }
 
 [role="banner"],
-[role="marquee"],
 [role="main"] {
   margin: 0 auto;
   @include breakpoint($break-fast, "max-width") {
@@ -172,6 +171,14 @@ body {
 
   @include breakpoint($break-brunch + 1px, "min-width") {
     width: $break-dinner - 20px;
+  }
+}
+
+[role="marquee"] > [role="columnheader"] {
+  margin: 0 auto;
+  padding: 0 20px;
+  @include breakpoint($break-brunch + 1px, "min-width") {
+    max-width: $break-dinner;
   }
 }
 
