@@ -358,18 +358,6 @@ $asideOffset: -12.7%;
     a {
       display: block;
       font-family: $book-antiqua;
-      @include breakpoint($break-fast) {
-        line-height: 50px;
-        height: 49px;
-        margin-bottom: 1px;
-        .navigation__link--slider {
-          display: inline-block;
-          text-shadow: 1px 1px #000;
-          opacity: 0;
-          @include transition(all 0.75s ease);
-        }
-      }
-
       &:before {
         background-repeat: no-repeat;
         background-origin: border-box;
@@ -411,6 +399,18 @@ $asideOffset: -12.7%;
           @include show-bg-img("../img/interaction-16.svg");
         }
       }
+      @include breakpoint($break-elevenses, "max-width") {
+        line-height: 50px;
+        height: 49px;
+        margin-bottom: 1px;
+        .navigation__link--slider {
+          display: inline-block;
+          text-shadow: 1px 1px #000;
+          opacity: 0;
+          @include transition(all 0.75s ease);
+        }
+      }
+
       @include breakpoint($break-elevenses + 1px, "min-width") {
         display: inline-block;
         width: 25%;
@@ -713,15 +713,12 @@ $slider-nav-hard: rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0,
   }
 }
 
+//scss
 footer {
-  //@extend %whiteborder;
-  //background-color: $blueprint;
   margin-bottom: 1.5em;
   min-height: 250px;
   width: 100%;
   clear: both;
-  //@include vendor-prefix(background-size, 5px 5px);
-  //@include angled($slider-nav-hard, "0deg");
   .footer__content {
     @include breakpoint($break-fast, "min-width") {
       width: $break-fast;
@@ -760,6 +757,30 @@ footer {
     list-style-type: none;
     .footer__content--tab {
       float: left;
+      @include breakpoint($break-fast, "max-width") {
+        @for $i from 1 through $tabcount {
+          $countr: $tabcount - 1;
+          [for="#{$tab-slug}-#{$countr}"] {
+            z-index: $i;
+          }
+        }
+        &:nth-child(n+2) {
+          margin-left: -15%;
+        }
+      }
+
+      @include breakpoint($break-brunch, "min-width") {
+        @for $i from 1 through $tabcount {
+          $countr: $tabcount - 1;
+          [for="#{$tab-slug}-#{$countr}"] {
+            z-index: $i;
+          }
+        }
+        &:nth-child(n+2) {
+          margin-left: -10%;
+        }
+      }
+
       //background-color: $blueprint;
       //@include vendor-prefix(background-size, 5px 5px);
       //@include angled($slider-nav-hard, "90deg");
@@ -774,7 +795,6 @@ footer {
         bottom: 1px;
         background-color: $blueprint;
         @include breakpoint($break-elevenses, "max-width") {
-          border-bottom-color: transparent;
           margin-right: -1px;
           padding: 8px;
         }
@@ -807,8 +827,8 @@ footer {
       @include breakpoint($break-elevenses, "max-width") {
         [type=radio]:checked {
           ~ label {
-            border-bottom-color: $blueprint;
-            z-index: 2;
+            border-bottom-color: transparent;
+            z-index: $tabcount + 1;
           }
           ~ .footer__content--section {
             z-index: 1;
