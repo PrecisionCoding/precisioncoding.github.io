@@ -1,23 +1,19 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
 .unbulleted {
   margin: 0;
   padding: 0;
 }
-
 .unbulleted li {
   list-style-type: none;
   margin: auto 0;
   padding: 0;
   display: inline-block;
 }
-
 .unbulleted li a:hover {
   text-decoration: none;
 }
-
 .toggler {
   @include breakpoint($break-fast) {
     position: absolute;
@@ -27,9 +23,11 @@
     margin: 0;
     border: 0;
     z-index: 110;
+
     &.navbar {
       left: 0;
       top: 50%;
+
       span {
         position: absolute;
         display: inline-block;
@@ -38,6 +36,7 @@
         height: 3px;
         background: rgb(255, 255, 255);
         transition: 0.3s;
+
         &:before, &:after {
           cursor: pointer;
           width: 1.2rem;
@@ -59,6 +58,7 @@
       }
       &.active {
         left: 0;
+
         span {
           &:before, &:after {
             top: 0;
@@ -76,11 +76,13 @@
     &.menubar {
       right: 2.125%;
       top: 2px;
+
       span {
         position: absolute;
         display: block;
         content: '';
         transition: all 500ms ease-in-out;
+
         &:before, &:after {
           cursor: pointer;
           height: 21px;
@@ -101,8 +103,10 @@
       }
       &.active {
         right: 4.125%;
+
         span {
           background-color: transparent;
+
           &:before, &:after {
             left: -5px;
             width: 3px;
@@ -117,23 +121,20 @@
       }
     }
   }
-
   @include breakpoint($break-elevenses + 1px, "min-width") {
     display: none;
   }
 }
-
 a {
   &:link, &:visited, &:hover, &:active {
-    color: $white;
+    color: $secondary-colour;
     text-decoration: none;
   }
   &:hover, &:active {
-    color: $white;
+    color: $secondary-colour;
     text-decoration: underline;
   }
 }
-
 nav a {
   margin: 0;
   padding: 0;
@@ -142,51 +143,42 @@ nav a {
 /*51,102,255*/
 body {
   @extend body;
-  background-color: $blueprint;
+  background-color: $primary-colour;
   background-image: url(../img/grid-offset.png);
   background-repeat: repeat;
   background-origin: content-box;
   background-size: auto;
-  color: $white;
+  background-position: center top;
+  color: $secondary-colour;
   font-family: $avenir;
   -webkit-font-smoothing: antialiased;
 }
-
-[role="heading"],
-[role="toolbar"],
-[role="navigation"] {
+[role="heading"], [role="toolbar"], [role="navigation"] {
   text-align: center;
 }
-
-[role="banner"],
-[role="main"] {
+[role="banner"], [role="main"] {
   margin: 0 auto;
+
   @include breakpoint($break-fast, "max-width") {
     width: $break-fast - 20px;
   }
-
   @include breakpoint($break-brunch, "min-width") {
     width: $break-brunch - 20px;
   }
-
   @include breakpoint($break-brunch + 1px, "min-width") {
     width: $break-dinner - 20px;
   }
 }
-
 [role="marquee"] > [role="columnheader"] {
   margin: 0 auto;
   padding: 0 20px;
+
   @include breakpoint($break-brunch + 1px, "min-width") {
     max-width: $break-dinner;
   }
 }
-
-[role="banner"],
-[role="search"],
-[role="document"],
-[role="complementary"] {
-  margin-bottom: 1.5rem;
+[role="banner"], [role="document"], [role="complementary"] {
+  margin-bottom: 1.3rem;
   position: relative;
 }
 
@@ -197,34 +189,44 @@ body {
     border: {
       width: 0 1px 1px;
       style: solid;
-      color: $white;
+      color: $secondary-colour;
     };
   }
 } 
 */
+[role="banner"] {
+  height: 250px; 
+  svg { 
+    position: absolute; top:0; z-index: -1;
+    a {
+      @extend %drop-shadow; 
+    }
+  }
 
+
+}
 [role="main"] {
   margin: 1.5em auto;
 }
-
 $flippedSet: -4px;
 $asideOffset: -12.7%;
 
 .flipped {
-  @include perspective(1000);
+  @include breakpoint(1000);
   text-shadow: rgb(0, 0, 0) 1px 1px 0;
+
   b {
     display: inline-block;
     font-size: inherit;
     font-family: $book-antiqua;
     font-weight: 100;
-    color: $white;
+    color: $secondary-colour;
     text-decoration: none;
+
     &:first-of-type {
       @include breakpoint($break-fast) {
         margin-right: $flippedSet;
       }
-
       @include transition(all 1000ms);
       @include transform(rotateY(180deg));
     }
@@ -237,15 +239,18 @@ $asideOffset: -12.7%;
     @include transform-style(preserve-3d);
   }
 }
-
 [role="search"] {
+  position: relative;
+  top: 10px;
   form {
     border: {
       width: 1px;
       style: solid;
-      color: $white;
-    };
+      color: $secondary-colour;
+    }
+    
     max-width: 300px;
+
     button {
       background: none;
       border: none;
@@ -253,6 +258,7 @@ $asideOffset: -12.7%;
       color: white;
       line-height: 1.5em;
       font-weight: 400;
+
       &:focus {
         outline: none;
       }
@@ -263,71 +269,67 @@ $asideOffset: -12.7%;
       width: 88%;
       border: none;
       background: transparent;
-      color: $white;
+      color: $secondary-colour;
+
       &:focus {
         outline: none;
       }
     }
   }
 }
-
 [role="heading"] {
-  h1 {
-    margin: .57em 0;
-    text-align: center;
-    line-height: 25px;
-    font-weight: 100;
-    font-family: $book_antiqua;
-    text-shadow: rgb(0, 0, 0) 1px 1px;
-    @include breakpoint($break-elevenses) {
-      font-size: 1.2em;
-      & .flipped {
-        b {
-          margin-right: -12px;
-        }
-        &:hover b {
-          margin-right: 0;
-        }
-      }
-    }
+  margin: 1.3rem 0 0;
+  text-align: center;
+  line-height: 150px;
+  font-weight: 100;
+  font-family: $book_antiqua;
+  text-shadow: rgb(0, 0, 0) 1px 1px;
 
-    @include breakpoint($break-elevenses + 1px, "min-width") {
-      font-size: 4.0em;
-      & .flipped {
-        b {
-          margin-right: -38px;
-        }
-        &:hover b {
-          margin-right: 0;
-        }
-      }
-    }
+  @include breakpoint($break-elevenses) {
+    font-size: 1.2em;
 
-    a {
-      strong, b {
-        font-weight: inherit;
+    & .flipped {
+      b {
+        margin-right: -12px;
       }
-      &:hover,
-      &:focus,
-      &:active {
-        text-decoration: none;
-        b, span {
-          letter-spacing: 0;
-          text-decoration: none;
-        }
-        span {
-          opacity: 1;
-          text-decoration: none;
-        }
-      }
-      span {
-        font-variant: small-caps;
-        /*opacity: 0;*/
+      &:hover b {
+        margin-right: 0;
       }
     }
   }
-}
+  @include breakpoint($break-elevenses + 1px, "min-width") {
+    font-size: 4.0em;
 
+    & .flipped {
+      b {
+        margin-right: -38px;
+      }
+      &:hover b {
+        margin-right: 0;
+      }
+    }
+  }
+  a {
+    strong, b {
+      font-weight: inherit;
+    }
+    &:hover, &:focus, &:active {
+      text-decoration: none;
+
+      b, span {
+        letter-spacing: 0;
+        text-decoration: none;
+      }
+      span {
+        opacity: 1;
+        text-decoration: none;
+      }
+    }
+    span {
+      font-variant: small-caps;        /*opacity: 0;*/
+    }
+  }
+}
 [role="navigation"] {
   @include breakpoint($break-fast) {
     position: absolute;
@@ -335,96 +337,113 @@ $asideOffset: -12.7%;
     left: $asideOffset;
     height: 100%;
     width: 13.125%;
-    border-right: 1px solid $white;
-    background-color: $blueprintAlpha9;
+    border-right: 1px solid $secondary-colour;
+    background-color: $primary-colour;
     z-index: 100;
     padding: 0;
     @include transition(1s ease-in-out);
+
     &.slideOut {
       @include transform(translate(100%, 0));
     }
   }
+  @include breakpoint($break-fast) {
+    margin-top: 2.2em;
+  }
+  @include breakpoint($break-elevenses + 1px, "min-width") {
+    height: 50px;
+    width:65%;
+    margin-left: 33%;
+  }
+  a {
+    display: block;
+    font-family: $book-antiqua;
+    line-height: 2.6;
+    text-shadow: rgb(0, 0, 0) 1px 1px;
+    font-size:1.25rem;
+    font-weight:700;
 
-  nav {
-    @include breakpoint($break-fast) {
-      margin-top: 2.2em;
+    &:before {
+      background-repeat: no-repeat;
+      background-origin: border-box;
+      background-position: 10px center;
+      background-clip: border-box;
+      background-size: 22px 32px;
+
+      .smaller & {
+        background-size: 22px 21px;
+      }
     }
+    &:hover {
+      .navigation__link--slider {
+        @include breakpoint($break-fast) {
+          width: auto;
+          border-top-width: 1px;
+          border-bottom-width: 1px;
+          margin-left: 100%;
+          padding-right: $grid-gutter;
+          padding-left: $grid-gutter;
 
-    @include breakpoint($break-elevenses + 1px, "min-width") {
-      height: 50px;
-      padding-top: 4px;
-    }
-
-    a {
-      display: block;
-      font-family: $book-antiqua;
-      &:before {
-        background-repeat: no-repeat;
-        background-origin: border-box;
-        background-position: 10px center;
-        background-clip: border-box;
-        background-size: 22px 32px;
-        .smaller & {
-          background-size: 22px 21px;
+          border: {
+            width: 1px 1px 1px 0;
+            color: $secondary-colour;
+            style: solid;
+          }
+          ;
+          //@include transform(translate(100%, 0));
+          background-color: $primary-colour;
         }
       }
-      &:hover {
-        .navigation__link--slider {
-          @include breakpoint($break-fast) {
-            width: auto;
-            border-top-width: 1px;
-            border-bottom-width: 1px;
-            margin-left: 100%;
-            padding-right: $grid-gutter;
-            padding-left: $grid-gutter;
-            border: {
-              width: 1px 1px 1px 0;
-              color: $white;
-              style: solid;
-            };
-            //@include transform( translate(100%, 0) );
-            background-color: $blueprintAlpha9;
-          }
-        }
-        &.portfolio:before {
+      &.portfolio {
+        //text-shadow: darken($portfolio, 50%) 1px 1px;
+        &:before {
           @include show-bg-img("../img/compass-16.svg");
         }
-        &.chronicles:before {
+      }
+      &.chronicles {
+        //text-shadow: $chronicles 1px 1px;
+        &:before {
           @include show-bg-img("../img/chronicles-16.svg");
         }
-        &.experiments:before {
+      }
+      &.experiments {
+        //text-shadow: $experiments 1px 1px;
+        &:before {
           @include show-bg-img("../img/experiments-16.svg");
         }
-        &.interactions:before {
+      }
+      &.interactions {
+        //text-shadow: $interactions 1px 1px;
+        &:before {
           @include show-bg-img("../img/interaction-16.svg");
         }
       }
-      @include breakpoint($break-elevenses, "max-width") {
-        line-height: 50px;
-        height: 49px;
-        margin-bottom: 1px;
-        .navigation__link--slider {
-          display: inline-block;
-          text-shadow: 1px 1px #000;
-          opacity: 0;
-          @include transition(all 0.75s ease);
-        }
-      }
+    }
+    @include breakpoint($break-elevenses, "max-width") {
+      line-height: 50px;
+      height: 49px;
+      margin-bottom: 1px;
 
-      @include breakpoint($break-elevenses + 1px, "min-width") {
+      .navigation__link--slider {
         display: inline-block;
-        width: 25%;
-        &:hover {
-          background-position: 30% center;
-          &.wider {
-            background-position: 25% center;
-          }
+        text-shadow: 1px 1px #000;
+        opacity: 0;
+        @include transition(all 0.75s ease);
+      }
+    }
+    @include breakpoint($break-elevenses + 1px, "min-width") {
+      display: inline-block;
+      width: 25%;
+
+      &:hover {
+        background-position: 30% center;
+        &.wider {
+          background-position: 25% center;
         }
       }
     }
   }
 }
-
 [role="menubar"] {
   @include breakpoint($break-fast) {
     position: absolute;
@@ -437,24 +456,24 @@ $asideOffset: -12.7%;
     z-index: 100;
     padding: 0;
     @include transition(1s ease-in-out);
+
     &.slideOut {
       @include transform(translate(-100%, 0));
     }
   }
-
   @include breakpoint($break-elevenses + 1px, "min-width") {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 10px;
+    right: 50%;
+    margin-right: -150px;
   }
-
   ol {
     padding: 0;
     margin: 0;
+
     @include breakpoint($break-fast) {
       margin: 50px auto 0;
     }
-
     @include breakpoint($break-elevenses + 1px, "min-width") {
       li {
         display: inline-block;
@@ -462,35 +481,33 @@ $asideOffset: -12.7%;
     }
   }
 }
-
 [role="listbox"] {
   width: 100%;
   margin: 10px auto;
   padding: 0;
+
   li {
     display: inline;
   }
 }
-
-[role="listbox"] a,
-[role="menuitem"] a {
+[role="listbox"] a, [role="menuitem"] a {
   display: inline-block;
   margin: 0 $grid-gutter;
+
   &:hover {
     text-decoration: none;
   }
 }
-
 time {
   font-size: 0.675em;
   font-style: oblique;
 }
-
 .angular-tabbed {
   position: relative;
   margin: 0;
   padding: 0;
   overflow: hidden;
+
   .tabbed {
     position: absolute;
     margin: 0;
@@ -499,6 +516,7 @@ time {
     width: 33%;
     text-transform: capitalize;
     z-index: 1;
+
     .angled {
       position: relative;
       top: 0;
@@ -507,37 +525,39 @@ time {
       z-index: 2;
       font-variant: small-caps;
     }
-  }
-  .tabbed:after {
-    position: absolute;
-    top: 0;
-    display: block;
-    content: " ";
-    z-index: 1;
-    background: $blackalpha7;
-    @include transform(skewX(135deg));
+    // &::before {
+    //   position: absolute;
+    //   top: 0;
+    //   display: block;
+    //   content: " ";
+    //   z-index: 0;
+    //   background: $blackalpha7;
+    //   @include transform(skewX(135deg));
+    // }
   }
 }
-
 $slider-nav-hard: rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0);
 
 [role="marquee"] {
+  display: none !important;
+
   @include breakpoint($break-supper) {
     display: none;
   }
-
   @include breakpoint($break-supper, min-width) {
     position: relative;
     padding-top: 0.1%;
+
     .slider-nav {
       position: absolute;
       top: 52px;
-      background-color: $blueprint;
+      background-color: $primary-colour;
       width: 200px;
       line-height: 447px;
       text-align: center;
       font-size: 11.5em;
-      //border-top: 1px solid $white;
+      //border-top: 1px solid $secondary-colour;
+
       &:hover {
         text-decoration: none;
         outline: none;
@@ -560,39 +580,47 @@ $slider-nav-hard: rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0,
       width: 1174px;
       border-width: 1px 1px 0;
       border-style: solid;
-      border-color: $white;
+      border-color: $secondary-colour;
       padding: 10px 0;
+
       aside {
         right: $grid-gutter;
       }
     }
   }
 }
-
 [role="slider"] {
   border: {
     width: 1px;
     style: solid;
-    color: $white;
-  };
+    color: $secondary-colour;
+  }
+  ;
   height: 450px;
   overflow: hidden;
+
   div:first-of-type {
     margin: auto;
+
     border: {
       width: 0 1px;
       style: solid;
-      color: $white;
-    };
+      color: $secondary-colour;
+    }
+    ;
     width: 1174px;
+
     figure {
       //display: inline-block;
-      img {}
+
+      img {
+      }
       figcaption {
         width: 80%;
         height: 100px;
         bottom: 0;
         right: -50px;
+
         aside {
           margin: 0;
           padding-left: 70px;
@@ -606,13 +634,14 @@ $slider-nav-hard: rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0,
     }
   }
 }
-
 [role="alert"] {
   margin-bottom: 1.5rem;
+
   figure {
     width: 300px;
     height: 200px;
-    border: 1px solid $white;
+    //border: 1px solid $secondary-colour;
+
     @include breakpoint($break-brunch, min-width) {
       min-height: 200px;
       float: left;
@@ -620,41 +649,43 @@ $slider-nav-hard: rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0,
       margin-bottom: 1.5em;
       padding-bottom: 1.5em;
     }
-
     figcaption {
       top: 0;
       left: 0;
       text-align: center;
       line-height: 30px;
-      border-bottom: 1px solid $white;
+      //border-bottom: 1px solid $secondary-colour;
+
       aside {
+        position: relative;
         margin: 0;
-        border-left: 1px solid $white;
+        //border-left: 1px solid $secondary-colour;
       }
       p {
         margin: 0;
       }
     }
-    figcaption:after {
+    figcaption::before {
       width: 130px;
       height: 30px;
       right: -15px;
-      border-right: 1px solid $white;
+      //border-right: 1px solid $secondary-colour;
     }
   }
 }
-
 [role="columnheader"] {
   width: 100%;
   line-height: 48px;
   position: relative;
+
   .headlines & {
     @extend %whiteborder;
+
     aside {
       menu {
         li {
           a {
-            border-left: 1px solid $white;
+            border-left: 1px solid $secondary-colour;
             padding: 15px 20px;
           }
         }
@@ -664,6 +695,7 @@ $slider-nav-hard: rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0,
   h2 {
     margin: 0;
     padding: 0;
+
     a {
       display: block;
       padding: 0 $grid-gutter;
@@ -680,7 +712,7 @@ $slider-nav-hard: rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0,
           z-index: 1;
           width: 50px;
           height: 100%;
-          border-right: 1px solid $white;
+          border-right: 1px solid $secondary-colour;
           @include transform(skewX(135deg));
         }
       }
@@ -691,75 +723,71 @@ $slider-nav-hard: rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0,
     right: $grid-gutter;
     top: 0;
     padding: 0;
+
     menu {
       margin: 0;
       padding: 0;
+
       .pointer {
         cursor: pointer;
       }
     }
   }
 }
-
 [role="document"] {
   @include breakpoint($break-elevenses + 1px, "min-width") {
     @include column(8);
   }
 }
-
 [role="complementary"] {
   @include breakpoint($break-elevenses + 1px, "min-width") {
     @include column(4);
   }
 }
-
 //scss
 footer {
   margin-bottom: 1.5em;
   min-height: 250px;
   width: 100%;
   clear: both;
+
   .footer__content {
     @include breakpoint($break-fast, "min-width") {
       width: $break-fast;
     }
-
     @include breakpoint($break-brunch, "min-width") {
       width: $break-brunch;
     }
-
     @include breakpoint($break-elevenses, "min-width") {
       width: $break-elevenses;
     }
-
     @include breakpoint($break-lunch, "min-width") {
       width: $break-lunch;
     }
-
     @include breakpoint($break-tea, "min-width") {
       width: $break-tea;
     }
-
     @include breakpoint($break-supper, "min-width") {
       width: $break-supper;
     }
-
     @include breakpoint($break-dinner + 1px, "min-width") {
       width: $break-dinner;
       margin-left: 50%;
       @include transform(translateX(-50%));
     }
-
     position: relative;
     margin: 0 0 1.5em;
     padding: 0;
     min-height: 250px;
     list-style-type: none;
+
     .footer__content--tab {
       float: left;
+
       @include breakpoint($break-fast, "max-width") {
         @for $i from 1 through $tabcount {
           $countr: $tabcount - 1;
+
           [for="#{$tab-slug}-#{$countr}"] {
             z-index: $i;
           }
@@ -768,10 +796,10 @@ footer {
           margin-left: -15%;
         }
       }
-
       @include breakpoint($break-brunch, "min-width") {
         @for $i from 1 through $tabcount {
           $countr: $tabcount - 1;
+
           [for="#{$tab-slug}-#{$countr}"] {
             z-index: $i;
           }
@@ -780,10 +808,10 @@ footer {
           margin-left: -10%;
         }
       }
-
-      //background-color: $blueprint;
+      //background-color: $primary-colour;
       //@include vendor-prefix(background-size, 5px 5px);
       //@include angled($slider-nav-hard, "90deg");
+
       [type=radio] {
         display: none;
       }
@@ -793,23 +821,38 @@ footer {
         position: relative;
         margin-bottom: 1px;
         bottom: 1px;
-        background-color: $blueprint;
+        background-color: $primary-colour;
+
         @include breakpoint($break-elevenses, "max-width") {
           margin-right: -1px;
           padding: 8px;
         }
-
         @include breakpoint($break-elevenses + 1px, "min-width") {
-          border-bottom-color: $blueprint;
+          border-bottom-color: $primary-colour;
           z-index: 2;
           padding: 5px 10px;
+        }
+        &::before {
+          content: ''; /* To generate the box */
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: .5em;
+          left: 0;
+          z-index: -1;
+          border-bottom: none;
+          border-radius: 10px 10px 0 0;
+          box-shadow: 0 2px hsla(0, 0%, 100%, .5) inset;
+          transform: perspective(5px) rotateX(2deg);
+          transform-origin: bottom;
         }
       }
       .footer__content--section {
         @extend %whiteborder;
         width: auto;
         padding: 10px;
-        background: $blueprint;
+        background: $primary-colour;
+
         @include breakpoint($break-elevenses, "max-width") {
           position: absolute;
           top: 42px;
@@ -817,7 +860,6 @@ footer {
           right: 0;
           bottom: 0;
         }
-
         @include breakpoint($break-elevenses + 1px, "min-width") {
           position: relative;
           margin: -3px -1px 0 0;
@@ -835,7 +877,6 @@ footer {
           }
         }
       }
-
       @include breakpoint($break-elevenses + 1px, "min-width") {
         @include column(4, $padding: 0);
       }

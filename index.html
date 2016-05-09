@@ -12,186 +12,152 @@
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
   </head>
   <body class="grid">
-    <header role="banner" class="clearfix">
+    <header role="banner">
+      <svg id="masked_banner" viewBox="0 0 1154 250" enable-background="new 0 0 1154 245" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  preserveAspectRatio="xMinYMin meet">
+        <g>
+          <clipPath id="banner">
+            <polygon id="mask" points="0,99 0,200 129.3,200 1154,200 1154,0 799.5,0 769.6,49 279.5,49 249.4,99" style="box-shadow: 0 10px 6px -6px #777;" />
+          </clipPath>
+        </g>
+        <filter id="drop-shadow2">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="4"></feGaussianBlur>
+          <feOffset dx="8" dy="10"></feOffset>
+          <feMerge>
+            <feMergeNode></feMergeNode>
+            <feMergeNode in="SourceGraphic"></feMergeNode>
+          </feMerge>
+        </filter>
+        <a id="clipLink" xlink:href="/">
+          <image clip-path="url(#banner)" filter="drop-shadow2" height="207px" width="1154px" xlink:href="img/header-home.png" style="box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)" />
+        </a>
+        <!--<polygon points="150,222 130,203 1130,203 1130,250 383,250 350,222"/>-->
+        <polygon id="nav" points="150,222 130,203 1130,203 1130,250 383,250 350,222" stroke-width="0" fill="orange" />
+      </svg>
+
       <div role="search">
         <form method="post">
           <label class="widget__form--search-label visuallyhidden" for="s">Search</label>
-          <input name="s" id="s" type="search" placeholder="Search anything &#8230;" />
+          <input name="s" id="s" type="search" placeholder="Search &#8230;" />
           <button class="search" title="Search site"><i class="fa fa-search fa-large"></i></button>
         </form>
       </div>
-      <div role="heading">
-        <h1><a href="/" class="flipped"><b>Random</b> Precision</a></h1>
-      </div>
-      <aside role="navigation" class="clearfix">
-        <nav>
-          <a class="navigation__link portfolio" href="#portfolio" title="Portfolio"><span class="navigation__link--slider">Portfolio</span></a>
-          <a class="navigation__link chronicles wider" href="#chronicles" title="Chronicles"><span class="navigation__link--slider">Chronicles</span></a>
-          <a class="navigation__link experiments smaller wider" href="#experiments" title="Experiments"><span class="navigation__link--slider">Experiments</span></a>
-          <a class="navigation__link interactions smaller wider" href="#interactions" title="Interactions"><span class="navigation__link--slider">Interactions</span></a>
-        </nav>
-      </aside>
-      <aside role="menubar" class="clearfix">
+    <h1 role="heading"><a href="/" class="flipped"><b>Random</b> Precision</a></h1>
+      <nav role="navigation">
+        <a class="navigation__link portfolio" href="#portfolio" title="a growing list of projects and deliverables to highlight abilities and accomplishments"><span class="navigation__link--slider">Portfolio</span></a>
+        <a class="navigation__link chronicles wider" href="#chronicles" title="Chronicles"><span class="navigation__link--slider">Chronicles</span></a>
+        <a class="navigation__link experiments smaller wider" href="#experiments" title="Experiments"><span class="navigation__link--slider">Experiments</span></a>
+        <a class="navigation__link interactions smaller wider" href="#interactions" title="Interactions"><span class="navigation__link--slider">Interactions</span></a>
+      </nav>
+      <aside role="menubar">
         <ol role="menu" class="list-style-none">
           <li role="menuitem"><a href="#" title="Subscribe"><i class="fa fa-rss-square fa-large"></i></a></li>
           <li role="menuitem"><a href="#" title="Register"><i class="fa fa-pencil-square-o fa-large"></i></a></li>
           <li role="menuitem"><a href="#" title="Login"><i class="fa fa-sign-in fa-large"></i></a></li>
           <li role="menuitem"><a id="followers" title="Currently hiding offline from the twits; Visit Twitter to follow as well if you like!" class="tipped" href="http://twitter.com/precisioncoding"><i class="fa fa-twitter-square fa-large"></i></a></li>
-          <li role="menuitem"><a id="facebooked" title="Like on Facebook, the social place" class="tipped" href="https://www.facebook.com/pages/Random-Precision-Ltd/186625484704038"><i class="fa fa-facebook-square fa-large"></i></a></li>
-          <li role="menuitem"><a id="linked" title="Visit on LinkedIn - The Professional Network, let's link up!" class="tipped" href="http://uk.linkedin.com/in/randomprecisionltd"><i class="fa fa-linkedin-square fa-large"></i></a></li>
-          <li role="menuitem"><a id="googleplus" title="Check out on Google+" class="tipped" rel="publisher" href="https://plus.google.com/117061364311134950845"><i class="fa fa-google-plus-square fa-large"></i></a></li>
+          <li role="menuitem"><a id="facebooked" title="Find us on Facebook, the social place - let's like together" class="tipped" href="https://www.facebook.com/pages/Random-Precision-Ltd/186625484704038"><i class="fa fa-facebook-square fa-large"></i></a></li>
+          <li role="menuitem"><a id="linked" title="Visit us on LinkedIn - The Professional Network - let's link up" class="tipped" href="http://uk.linkedin.com/in/randomprecisionltd"><i class="fa fa-linkedin-square fa-large"></i></a></li>
+          <li role="menuitem"><a id="googleplus" title="Check us out on Google+ - let's hangout" class="tipped" rel="publisher" href="https://plus.google.com/117061364311134950845"><i class="fa fa-google-plus-square fa-large"></i></a></li>
         </ol>
       </aside>
     </header>
-    <section role="marquee" class="clearfix">
-      <header role="columnheader" class="clearfix">
-        <h2>Highlights</h2>
-        <aside>
-          <menu>
-            <ol class="unbulleted">
-              <li><a href="#"><i class="fa fa-circle-o"></i></a></li>
-              <li><a href="#"><i class="fa fa-circle-o"></i></a></li>
-              <li><a href="#"><i class="fa fa-circle"></i></a></li>
-              <li><a href="#"><i class="fa fa-circle-o"></i></a></li>
-            </ol>
-          </menu>
-        </aside>
-      </header>
-      <div role="slider">
-        <div>
-          <figure class="angular-tabbed">
-            <!-- 1174/450 - 960/368 - 748/284 - 548/208 - 460/175  300/114 -->
-            <img src="http://lorempixel.com/1174/450/abstract" alt="" />
-            <figcaption class="tabbed">
-            <aside class="angled">
-              <h3>Image Headline</h3>
-              <p>Image Caption</p>
-            </aside>
-            </figcaption>
-          </figure>
-          <figure class="angular-tabbed">
-            <!-- 1174/450 - 960/368 - 748/284 - 548/208 - 460/175  300/114 -->
-            <img src="http://lorempixel.com/1174/450/abstract" alt="" />
-            <figcaption class="tabbed">
-            <aside class="angled">
-              <h3>Image Headline</h3>
-              <p>Image Caption</p>
-            </aside>
-            </figcaption>
-          </figure>
-          <figure class="angular-tabbed">
-            <!-- 1174/450 - 960/368 - 748/284 - 548/208 - 460/175  300/114 -->
-            <img src="http://lorempixel.com/1174/450/abstract" alt="" />
-            <figcaption class="tabbed">
-            <aside class="angled">
-              <h3>Image Headline</h3>
-              <p>Image Caption</p>
-            </aside>
-            </figcaption>
-          </figure>
-          <figure class="angular-tabbed">
-            <!-- 1174/450 - 960/368 - 748/284 - 548/208 - 460/175  300/114 -->
-            <img src="http://lorempixel.com/1174/450/abstract" alt="" />
-            <figcaption class="tabbed">
-            <aside class="angled">
-              <h3>Image Headline</h3>
-              <p>Image Caption</p>
-            </aside>
-            </figcaption>
-          </figure>
-        </div>
-        <a href="#left" id="left" class="slider-nav">&lsaquo;</a> <a href="#right" id="right" class="slider-nav">&rsaquo;</a>
-      </div>
-    </section>
-    <main role="main" class="clearfix">
-      <section role="document">
-        <div role="alert" class="exclusive clearfix">
-          <figure class="angular-tabbed">
-            <picture>
-              <source media="(min-width: 45em)" srcset="http://lorempixel.com/1174/450/abstract, http://lorempixel.com/1174/450/abstract 2x">
-              <source media="(min-width: 18em)" srcset="http://lorempixel.com/300/200/abstract, http://lorempixel.com/300/200/abstract 2x">
-              <img src="http://lorempixel.com/300/200/abstract" srcset="http://lorempixel.com/400/300/abstract 2x" alt="" />
-            </picture>
-            <figcaption class="tabbed">
-            <aside>
-              <p>Exclusive</p>
-            </aside>
-            </figcaption>
-          </figure>
-          <div>
-            <header>
-              <h2>Exclusive Headline</h2>
-              <time datetime="2013-09-27">27th Sept, 2013</time>
-            </header>
-            <p class="excerpt">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta &#8230;</p>
-            <p class="continued"><a href="#">Read more &raquo;</a></p>
+        <main role="main" class="clearfix">
+        <section role="document">
+          <div role="alert" class="exclusive clearfix">
+            <figure class="angular-tabbed">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-331.5 180.5 299 199">
+                <defs>
+                  <path id="a" d="M-331 212.4l.1 166.5 297.9.1V181h-171.5l-29.7 30.5-96.8.9z"/>
+                </defs>
+                <clipPath id="b">
+                  <use xlink:href="#a" overflow="visible"/>
+                </clipPath>
+                <g clip-path="url(#b)">
+                  <image overflow="visible" width="300" height="200" xlink:href="img/8B8D96A69672E9CF.png" transform="translate(-332 180)"/>
+                </g>
+              </svg>
+              <picture>
+                <source media="(min-width: 45em)" srcset="http://lorempixel.com/1174/450/abstract, http://lorempixel.com/1174/450/abstract 2x">
+                <source media="(min-width: 18em)" srcset="http://lorempixel.com/300/200/abstract, http://lorempixel.com/300/200/abstract 2x">
+                <img src="http://lorempixel.com/300/200/abstract" srcset="http://lorempixel.com/400/300/abstract 2x" alt="" />
+              </picture>
+              <figcaption class="tabbed">
+              <aside>
+                <p>Exclusive</p>
+              </aside>
+              </figcaption>
+            </figure>
+            <div>
+              <header>
+                <h2>Exclusive Headline</h2>
+                <time datetime="2013-09-27">27th Sept, 2013</time>
+              </header>
+              <p class="excerpt">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta &#8230;</p>
+              <p class="continued"><a href="#">Read more &raquo;</a></p>
+            </div>
           </div>
-        </div>
-        <div class="headlines">
-          <header id="news" role="columnheader">
-            <h2> <a href="#news">News</a> </h2>
-            <aside>
-              <menu>
-              <ul class="unbulleted">
-                <li>
-                  <input type="radio" name="newsView" id="newsView-grid" value="grid" class="visuallyhidden" />
-                  <label for="newsView-grid" class="pointer"><i class="fa fa-table"></i> Grid</label>
-                </li>
-                <li>
-                  <input type="radio" name="newsView" id="newsView-list" value="list" class="visuallyhidden" />
-                  <label for="newsView-list" class="pointer"><i class="fa fa-list"></i> List</label>
-                </li>
-              </ul>
-              </menu>
-            </aside>
-          </header>
-          <article role="note">
-            <header>
-              <h1>Title of news</h1>
-              <h2>By my name</h2>
+          <div class="headlines">
+            <header id="news" role="columnheader">
+              <h2> <a href="#news">News</a> </h2>
+              <aside>
+                <menu>
+                <ul class="unbulleted">
+                  <li>
+                    <input type="radio" name="newsView" id="newsView-grid" value="grid" class="visuallyhidden" />
+                    <label for="newsView-grid" class="pointer"><i class="fa fa-table"></i> Grid</label>
+                  </li>
+                  <li>
+                    <input type="radio" name="newsView" id="newsView-list" value="list" class="visuallyhidden" />
+                    <label for="newsView-list" class="pointer"><i class="fa fa-list"></i> List</label>
+                  </li>
+                </ul>
+                </menu>
+              </aside>
             </header>
-            <time datetime="2013-09-27">27th September, 2013</time>
-          </article>
-        </div>
-      </section>
-      <aside role="complementary">
-        <div role="columnheader">
-          <header>
+            <article role="note">
+              <header>
+                <h1>Title of news</h1>
+                <h2>By my name</h2>
+              </header>
+              <time datetime="2013-09-27">27th September, 2013</time>
+            </article>
+          </div>
+        </section>
+        <aside role="complementary" style="1px solid white;">
+          <header role="columnheader">
             <h3>Aside Headline</h3>
           </header>
-        </div>
-      </aside>
-    </main>
-    <footer role="contentinfo" class="clearfix">
-      <ol role="listbox" class="footer__content">    
-        <li role="listitem" class="footer__content--tab">
-          <input type="radio" id="tab-1" name="tab-group-1" checked>
-          <label class="footer__content--tab-label" for="tab-1">Footer Section 1</label>       
-          <div class="footer__content--section">stuff</div> 
-        </li>
-        <li role="listitem" class="footer__content--tab">
-          <input type="radio" id="tab-2" name="tab-group-1">
-          <label class="footer__content--tab-label" for="tab-2">Footer Section 2</label>       
-          <div class="footer__content--section">more stuff</div> 
-        </li>
-        <li role="listitem" class="footer__content--tab">
-          <input type="radio" id="tab-3" name="tab-group-1">
-          <label class="footer__content--tab-label" for="tab-3">Footer Section 3</label>     
-          <div class="footer__content--section">even more stuff</div> 
-        </li>        
-      </ol>
-    </footer>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-    <script src="/js/plugins.js"></script>
-    <script src="/js/main.js"></script>
-    <script>
-    var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
-    (function (d, t) {
-    var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
-    g.src = '//www.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g, s)
-    }(document, 'script'));
-    </script>
-  </body>
-</html>
+        </aside>
+        </main>
+        <footer role="contentinfo" class="clearfix">
+          <ol role="listbox" class="footer__content">
+            <li role="listitem" class="footer__content--tab">
+              <input type="radio" id="tab-1" name="tab-group-1" checked>
+              <label class="footer__content--tab-label" for="tab-1">Footer Section 1</label>
+              <div class="footer__content--section">stuff</div>
+            </li>
+            <li role="listitem" class="footer__content--tab">
+              <input type="radio" id="tab-2" name="tab-group-1">
+              <label class="footer__content--tab-label" for="tab-2">Footer Section 2</label>
+              <div class="footer__content--section">more stuff</div>
+            </li>
+            <li role="listitem" class="footer__content--tab">
+              <input type="radio" id="tab-3" name="tab-group-1">
+              <label class="footer__content--tab-label" for="tab-3">Footer Section 3</label>
+              <div class="footer__content--section">even more stuff</div>
+            </li>
+          </ol>
+        </footer>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+        <script src="/js/plugins.js"></script>
+        <script src="/js/main.js"></script>
+        <script>
+        var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+        (function (d, t) {
+        var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        g.src = '//www.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g, s)
+        }(document, 'script'));
+        </script>
+      </body>
+    </html>

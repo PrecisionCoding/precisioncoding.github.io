@@ -1,26 +1,133 @@
+(function () {
+'use strict';
+
 var styleSwitcher = document.getElementsByName("newsView");
 var storedClassName = localStorage.getItem("bodyClassName");
 
-var addEvent = function(type, to, fn) {
-	if (to.addEventListener) {
-		to.addEventListener(type, fn, false);
-	} else if (to.attachEvent) {
-		to.attachEvent('on' + type, fn);
-	} else {
-		to[type] = fn;
+var preflight = {
+	styles: {
+		normalizer: {
+			local: "css/normalize.min.css",
+			remote: "//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css"
+		},
+		fontAwesome: {
+			local: "/ccs/font-awesome/4.0.0/css/font-awesome.css",
+			remote: "//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css"
+		}
+	},
+	scripts: {
+		jquery : {
+			local : '/js/vendor/jquery-1.11.2.min.js',
+			remote : '/ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js'
+		}
+
 	}
+};
+
+var rndmSchm = [
+	{ title: "home", banner: "../img/header-home.png", color: "#ffa500" },
+	{ title: "portfolio", banner: "../img/header-portfolio.png", color: "#78b8bd" },
+	{ title: "chronicles", banner: "../img/header-chronicles.png", color: "#969fb2" },
+	{ title: "experiments", banner: "../img/header-experiments.png", color: "#96c33d" },
+	{ title: "interactions", banner: "../img/header-interaction.png", color: "#a276a5" }
+];
+
+function randomValue(rndmSchm) {
+    return rndmSchm[Math.round(Math.random() * (rndmSchm.length - 1))];
 }
+
+var addRandomClass = function (rndmSchm) {
+    return this.classList.toggle( "s-" + randomValue(rndmSchm.title) );
+};
+
+var addEvent = function(event, elem, fn) {
+	if (elem.addEventListener) {
+		elem.addEventListener(event, fn, false);
+	} else {
+		// elem.attachEvent("on" + event, function() {
+		// 	return(fn.call(elem, window.event));
+		// });
+	}
+};
+
+var getHexColor = function(colorStr) {
+    var a = document.createElement('div');
+    a.style.color = colorStr;
+    var colors = window.getComputedStyle( document.body.appendChild(a) ).color.match(/\d+/g).map(function(a){ return parseInt(a,10); });
+    document.body.removeChild(a);
+    return (colors.length >= 3) ? '#' + (((1 << 24) + (colors[0] << 16) + (colors[1] << 8) + colors[2]).toString(16).substr(1)) : false;
+};
+
+///<summary> filtering a collection down to a subset of the elements it contains </summary>
+///<param>c = collection</param>
+///<param>k = key</param>
+///<param>p = property</param>
+///<param>v = value</param>
+
+var getCollectionProperty = function(c, k, p, v){
+	var pick = c.filter(function(lock){
+		return(lock[k] === v);
+	}).map(function(lock){
+		return lock[p];
+	});
+	return pick;
+};
+
+var banner = $('#masked_banner');
+var clipLink = banner.find('#clipLink').children('image');
+var clip = clipLink.attr('xlink:href');
+var navbar = banner.find('#nav');
+var navbg = getHexColor(navbar.attr('fill'));
+
+$('nav')
+	.find('a')
+	.hover(
+		function(){
+			navbar.attr('fill', function(index,attr){
+		  	return attr.replace( navbar.attr('fill'), navbg );
+		  }); 
+			var link = $(this).text().toLowerCase();
+			var img = getCollectionProperty(rndmSchm, 'title', 'banner', link);
+			var clr = getCollectionProperty(rndmSchm, 'title', 'color', link);
+
+		  $(this).data('banner', clip).data('bg', navbg).data("fill", clr[0]);
+
+		  clipLink.attr('xlink:href', function(index, attr){
+		  	return attr.replace("home", link);
+		  });
+
+		  navbar.attr('fill', function(index,attr){
+		  	return attr.replace( navbg, clr[0] );
+		  }); 
+
+		},
+		function(){
+			var link = $(this).text().toLowerCase();
+			var navbg = $(this).data("bg");
+			var fill = $(this).data("fill");
+
+		  clipLink.attr('xlink:href', function(index, attr){
+		  	return attr.replace(link, "home");	
+		  });
+
+		  navbar.attr('fill', function(index,attr){
+		  	return attr.replace(fill, navbg);
+		  }); 
+
+		}
+	)
+	.end();
 
 function cssLoaded(href) {
 	var cssFound = false;
 
-	if (document.styleSheets != null) {
+	if (document.styleSheets !== null) {
 		for (var i = 0; i < document.styleSheets.length; i++) {
 			var sheet = document.styleSheets[i];
 			
-			if (sheet['href'].indexOf(href) >= 0 ){
+			if (sheet.href.indexOf(href) >= 0 ){
 				var rules = sheet.cssRules || sheet.rules;
-				if (rules != null && rules.length > 0) {
+				if (rules !== null && rules.length > 0) {
 					cssFound = true;
 				}
 			}
@@ -30,7 +137,7 @@ function cssLoaded(href) {
 }
 
 if (!cssLoaded('//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css')) {
-	local_bootstrap = document.createElement('link');
+	var local_bootstrap = document.createElement('link');
 	local_bootstrap.setAttribute("rel", "stylesheet");
 	local_bootstrap.setAttribute("href", "css/helpers/font-awesome/4.0.1/css/font-awesome.min.css");
 	document.getElementsByTagName("head")[0].appendChild(local_bootstrap);
@@ -46,19 +153,17 @@ var trigger = function(action, el) {
 	} else {
 		el.fireEvent('on' + action);
 	}
-}
+};
 
 
 
 function switchStyles() {
 	var styleSwitch = "";
 	for (var i = 0; i < styleSwitcher.length; i++) {
-		if (styleSwitcher[i].checked == true) {
+		if (styleSwitcher[i].checked === true) {
 			styleSwitch = styleSwitcher[i].value;
 		}
 	}
-
-	console.log(styleSwitch);
 
 	if (localStorage.length && localStorage.key("bodyClassName")) {
 	    if (document.body.classList.contains(localStorage.getItem("bodyClassName"))) {
@@ -72,7 +177,6 @@ function switchStyles() {
 }
 
 if (storedClassName) {
-	console.log("stored");
 	for (var i = 0; i < styleSwitcher.length; i++) {
 		if (styleSwitcher[i].value === storedClassName) {
 			styleSwitcher[i].checked = true;
@@ -83,6 +187,7 @@ if (storedClassName) {
 
 addEvent(styleSwitcher, 'click', switchStyles);
 
+})();
 /*var menuBarToggler = document.createElement("button");
 menuBarToggler.setAttribute('id', 'navbar-toggle');
 menuBarToggler.setAttribute('class', 'navbar toggler');
@@ -114,7 +219,7 @@ addEvent( "click", navBarToggler, function() {
 
 (function ($) {
 	$(window).resize(function() {
-		if(windowWidth != $(window).width()){
+		if(windowWidth !== $(window).width()){
 			location.reload();
 			return;
 		}
@@ -133,8 +238,8 @@ addEvent( "click", navBarToggler, function() {
 	var iPhone5Width = 320;
 	var iPhone5Height = 568;
 	var isMobile = windowWidth <= iPhone5Height;
-	var isIphone5Portrait = windowWidth == iPhone5Width;
-	var isIphone5Landscape = windowWidth == iPhone5Height;
+	var isIphone5Portrait = windowWidth === iPhone5Width;
+	var isIphone5Landscape = windowWidth === iPhone5Height;
 	
 	var locale = window.location.host.split('.')[0];
 
@@ -149,7 +254,7 @@ addEvent( "click", navBarToggler, function() {
 		}).each( function(){
 			$(this).height( maxHeight );
 		});
-	}	
+	};
 
 	var updateOrientation = function () {
 		// rewrite the function depending on what's supported
@@ -166,17 +271,17 @@ addEvent( "click", navBarToggler, function() {
 					orientation = 'portrait';
 				}
 				//$('aside[role="tabpanel"]').css('left', $(window).width() + 'px');
-			}
+			};
 		} else {
 			updateOrientation = function () {
 				// landscape when width is biggest, otherwise portrait
 				orientation = (window.innerWidth > window.innerHeight) ? 'landscape' : 'portrait';
 				//$('aside[role="tabpanel"]').css('left', $(window).width() + 'px');
-			}
+			};
 		}
 
 		updateOrientation();
-	}
+	};
 	
 	var scrollFixedMenu = function(menu){
 		$(window).scroll(function() {
@@ -186,12 +291,12 @@ addEvent( "click", navBarToggler, function() {
 			  $(menu).css({'position':'absolute','bottom':'0'});
 			}
 		});
-	}	
+	};
 	
 	if (isMobile) {
 		
 		updateOrientation();
-		var supportsOrientation = (typeof window.orientation == 'number' && typeof window.onorientationchange == 'object');
+		var supportsOrientation = (typeof window.orientation === 'number' && typeof window.onorientationchange === 'object');
 		if (supportsOrientation) {
 			window.addEventListener('orientationchange', updateOrientation, false);
 		}
@@ -241,17 +346,18 @@ addEvent( "click", navBarToggler, function() {
 			$('aside[role="menubar"]').css({'left': ($(window).width() - 1) + 'px', 'height': $(document).height() + 'px'});
 		}
 
-		if ($('aside[role="navigation"]').length > 0){
+		if ($('[role="navigation"]').length > 0){
+			var nav = $('[role="navigation"]');
 			//Show navigation toggle button
 			$('#menubar-toggle').show();
 			// Clone our navigation
-			mainNavigation = $('aside[role="navigation"]').clone();
+			mainNavigation = nav.clone();
 			// remove the superfish menu class
-			$('aside[role="navigation"]').children('ul').removeClass('sf-menu').addClass('mobileMenu');
+			nav.children('ul').removeClass('sf-menu').addClass('mobileMenu');
 			//add it back to the page
-			$('aside[role="navigation"]').prependTo('body').show();
+			nav.prependTo('body').show();
 			//set the height to the document
-			$('aside[role="navigation"]').css('height', $(document).height() + 'px');
+			nav.css('height', $(document).height() + 'px');
 
 		}
 
@@ -264,22 +370,21 @@ addEvent( "click", navBarToggler, function() {
 		var clonedSides = function (trigger, sidebar, movement, flag) {
 			$('[role="banner"]').children('figure').on('click', trigger, function (n) {
 				n.preventDefault();
-				if (flag != true) {
+				if (flag !== true) {
 					$('.page-wrapper').animate({ marginLeft : movement, }, 300, function () { 
-						$(sidebar).animate({ marginLeft : movement, }, 300, function () { flag = true });
+						$(sidebar).animate({ marginLeft : movement, }, 300, function () { flag = true; });
 					});
 				} else {
 					$(sidebar).animate({ marginLeft : 0, }, 300, function () {
-						$('.page-wrapper').animate({ marginLeft : 0, }, 300, function () { flag = false });						
+						$('.page-wrapper').animate({ marginLeft : 0, }, 300, function () { flag = false; });						
 					});
 				}
 				
 				if ($('a#scroll-to-top').is('visible')) {
-					console.log("scroll visible");
 					$(this).trigger('click');
 				}
 			});
-		}
+		};
 
 		clonedSides('#navbar-toggle', 'aside[role="navigation"]', navMargin, menuStatus);
 		clonedSides('#menubar-toggle', 'aside[role="menubar"]', sideMargin, asideStatus);

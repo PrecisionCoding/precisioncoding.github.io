@@ -1,0 +1,13 @@
+<svg id="banner_mask" width="960" height="177" viewBox="0 0 1920 344" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+  <defs>
+    <polygon id="mask" points="0 172 396 172 461.3 86 1269.7 86 1333 0 1920 0 1920 344 0 344 "/>
+  </defs>
+  <g>
+    <clipPath id="banner">
+      <use xlink:href="#mask" overflow="hidden"/>
+    </clipPath>
+  </g>
+  <a xlink:href="/">
+    <image clip-path="url(#banner)" height="100%" width="100px" xlink:href="header-home.jpg" />
+  </a>
+</svg>

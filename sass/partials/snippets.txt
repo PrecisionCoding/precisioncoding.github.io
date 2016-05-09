@@ -1,0 +1,103 @@
+$break-fast: 320px;
+$break-brunch: 480px;
+$break-elevenses: 568px;
+$break-lunch: 620px;
+$break-tea: 680px;
+$break-supper: 960px;
+$break-dinner : 1174px;
+
+.footer__content {
+  @include breakpoint($break-fast, "min-width") {
+    width: $break-fast;
+  }
+
+  @include breakpoint($break-brunch, "min-width") {
+    width: $break-brunch;
+  }
+
+  @include breakpoint($break-elevenses, "min-width") {
+    width: $break-elevenses;
+  }
+
+  @include breakpoint($break-lunch, "min-width") {
+    width: $break-lunch;
+  }
+
+  @include breakpoint($break-tea, "min-width") {
+    width: $break-tea;
+  }
+
+  @include breakpoint($break-supper, "min-width") {
+    width: $break-supper;
+  }
+
+  @include breakpoint($break-dinner + 1px, "min-width") {
+    width: $break-dinner;
+    margin-left: 50%;
+    @include transform(translateX(-50%));
+  }
+
+  position: relative;
+  margin: 0 0 1.5em;
+  padding: 0;
+  min-height: 250px;
+  list-style-type: none;
+  .footer__content--tab {
+    float: left;
+    //background-color: $blueprint;
+    //@include vendor-prefix(background-size, 5px 5px);
+    //@include angled($slider-nav-hard, "90deg");
+    [type=radio] {
+      display: none;
+    }
+    label {
+      @extend %whiteborder;
+      display: inline-block;
+      position: relative;
+      margin-bottom: 1px;
+      bottom: 1px;
+      background-color: $blueprint;
+      @include breakpoint($break-elevenses, "max-width") {
+        border-bottom-color: transparent;
+        margin-right: -1px;
+        padding: 8px;
+      }
+
+      @include breakpoint($break-elevenses + 1px, "min-width") {
+        border-bottom-color: $blueprint;
+        z-index: 2;
+        padding: 5px 10px;
+      }
+    }
+    .footer__content--section {
+      @extend %whiteborder;
+      width: auto;
+      padding: 10px;
+      background: $blueprint;
+      @include breakpoint($break-elevenses, "max-width") {
+        position: absolute;
+        top: 42px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      @include breakpoint($break-elevenses + 1px, "min-width") {
+        position: relative;
+        margin: -3px -1px 0 0;
+        min-height: 215px;
+      }
+    }
+    @include breakpoint($break-elevenses, "max-width") {
+      [type=radio]:checked {
+        ~ label {
+          border-bottom-color: $blueprint;
+          z-index: 2;
+        }
+        ~ .footer__content--section {
+          z-index: 1;
+        }
+      }
+    }
+  }
+}
